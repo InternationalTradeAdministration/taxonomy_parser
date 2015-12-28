@@ -1,3 +1,3 @@
-module TaxonomyParser
+class TaxonomyParser
   VERSION = "0.1.0"
 end
