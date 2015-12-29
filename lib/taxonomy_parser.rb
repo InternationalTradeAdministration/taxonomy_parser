@@ -1,19 +1,21 @@
-require "taxonomy_parser/version"
+require 'taxonomy_parser/version'
+require 'taxonomy_parser/lookup_methods'
 require 'active_support/core_ext/object/blank'
 require 'nokogiri'
 require 'open-uri'
 require 'zip'
-require 'pp'
 
 class TaxonomyParser
+  include LookupMethods
   PROTEGE_URL = 'http://52.4.82.207:8080/webprotege/download?ontology=cafcdef1-058a-41dd-9c6e-19a0bc297c86'
   CONCEPT_GROUP_IRI = 'http://purl.org/iso25964/skos-thes#ConceptGroup'
   CONCEPT_IRI = 'http://www.w3.org/2004/02/skos/core#Concept'
+
   MEMBER_OF_IRI = 'http://purl.org/umu/uneskos#memberOf'
+  BROADER_IRI = 'http://www.w3.org/2004/02/skos/core#broader'
 
   def initialize(resource = PROTEGE_URL)
     @resource = resource
-
     @concepts = []
     @concept_groups = []
     @xml = extract_xml_from_zip
@@ -22,14 +24,19 @@ class TaxonomyParser
   def parse
     extract_terms(@concept_groups, CONCEPT_GROUP_IRI)
     extract_terms(@concepts, CONCEPT_IRI)
-    pp @concept_groups
-    pp @concepts
+  end
+
+  def concept_groups
+    @concept_groups
+  end
+
+  def concepts
+    @concepts
   end
 
   private
 
   def extract_terms(terms, iri)
-    terms
     root_node = @xml.xpath("//rdf:Description[@rdf:about='#{iri}']").first
     root_node_hash = extract_node_hash(root_node)
     process_subclass_nodes(root_node_hash) do |node_hash|
@@ -51,24 +58,25 @@ class TaxonomyParser
     label = extract_label(node)
     path = build_path(parent_path, label)
     subject = extract_subject(node)
-    concept_groups = extract_concept_groups(node)
+    concept_groups = extract_additional_property(node, MEMBER_OF_IRI)
+    broader_terms = extract_additional_property(node, BROADER_IRI)
     subclass_nodes = extract_subclass_nodes(subject)
-
     { 
       label: label,
       leaf_node: subclass_nodes.blank?,
       path: path,
       subclass_nodes: subclass_nodes,
       subject: subject,
-      concept_groups: concept_groups
+      concept_groups: concept_groups,
+      broader_terms: broader_terms
     }
   end
 
-  def extract_concept_groups(node)
-    member_of_nodes = node.xpath("./rdfs:subClassOf/owl:Restriction[owl:onProperty[@rdf:resource='#{MEMBER_OF_IRI}']]")
-    concept_group_subjects = member_of_nodes.map{ |node| node.xpath('./owl:someValuesFrom').first.attr('rdf:resource')}.flatten
-    concept_group_nodes = concept_group_subjects.map{ |subject| @xml.xpath("//owl:Class[@rdf:about='#{subject}']")}.flatten
-    concept_group_nodes.map{|node| extract_label(node) }
+  def extract_additional_property(node, iri)
+    internal_nodes = node.xpath("./rdfs:subClassOf/owl:Restriction[owl:onProperty[@rdf:resource='#{iri}']]")
+    related_subjects = internal_nodes.map{ |node| node.xpath('./owl:someValuesFrom').first.attr('rdf:resource')}.flatten
+    related_nodes = related_subjects.map{ |subject| @xml.xpath("//owl:Class[@rdf:about='#{subject}']")}.flatten
+    related_nodes.map{|node| extract_label(node) }
   end
 
   def extract_label(node)
@@ -76,7 +84,7 @@ class TaxonomyParser
   end
 
   def build_path(parent_path, label)
-    "#{parent_path}/#{label}"
+    label.empty? ? "" : "#{parent_path}/#{label}"
   end
 
   def extract_subject(node)
@@ -100,7 +108,7 @@ class TaxonomyParser
     File.delete('temp.zip')
     Nokogiri::XML(content)
   end
-  
+
 end
 
  
