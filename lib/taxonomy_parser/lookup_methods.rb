@@ -16,19 +16,21 @@ module LookupMethods
     return world_region_terms + trade_region_terms
   end
 
-  def process_broader_terms(term, &block)
-    term[:broader_terms].each do |broader_label|
-      broader_term = find_concept_by_label(broader_label)
-      yield broader_term if broader_term
-      process_broader_terms(broader_term, &block) if broader_term
-    end
-  end
-
   def find_concepts_by_concept_group(concept_group, terms = concepts)
     terms.select{ |term| term[:concept_groups].include? concept_group }
   end
 
   def find_concept_by_label(label)
     concepts.find{ |concept| concept[:label] == label }
+  end
+
+  private
+
+  def process_broader_terms(term, &block)
+    term[:broader_terms].each do |broader_label|
+      broader_term = find_concept_by_label(broader_label)
+      yield broader_term if broader_term
+      process_broader_terms(broader_term, &block) if broader_term
+    end
   end
 end

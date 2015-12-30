@@ -1,0 +1,62 @@
+---
+- :label: Aerospace and Defense
+  :leaf_node: false
+  :path: "/Aerospace and Defense"
+  :subject: http://webprotege.stanford.edu/R8CoATsjiZSLAZF4Aaz6kK6
+  :concept_groups:
+  - Industries
+  :broader_terms: []
+- :label: Aviation
+  :leaf_node: true
+  :path: "/Aerospace and Defense/Aviation"
+  :subject: http://webprotege.stanford.edu/RDBsKPGzqliWT5godmR5PDV
+  :concept_groups:
+  - Sector
+  :broader_terms:
+  - Aerospace and Defense
+- :label: Afghanistan
+  :leaf_node: true
+  :path: "/Afghanistan"
+  :subject: http://webprotege.stanford.edu/RDzjXT0GYF9ecQbq6oyxewD
+  :concept_groups:
+  - Countries
+  :broader_terms:
+  - Economic Cooperation Organization
+  - Central Asia
+- :label: Asia
+  :leaf_node: false
+  :path: "/Asia"
+  :subject: http://webprotege.stanford.edu/R91fGuW6GPOnb7XSylIPwR5
+  :concept_groups:
+  - World Regions
+  :broader_terms: []
+- :label: Central Asia
+  :leaf_node: true
+  :path: "/Asia/Central Asia"
+  :subject: http://webprotege.stanford.edu/R9pQ9NO7LyXj7vL7WbTAVVA
+  :concept_groups:
+  - World Regions
+  :broader_terms:
+  - Asia
+- :label: International Cooperation
+  :leaf_node: false
+  :path: "/International Cooperation"
+  :subject: http://webprotege.stanford.edu/RBUhToH9SFoFVriuHfHzcvT
+  :concept_groups:
+  - Topics
+  :broader_terms: []
+- :label: Regional Organizations
+  :leaf_node: false
+  :path: "/International Cooperation/Regional Organizations"
+  :subject: http://webprotege.stanford.edu/RBb72pZnfGSZApKbgfMfARC
+  :concept_groups: []
+  :broader_terms:
+  - International Cooperation
+- :label: Economic Cooperation Organization
+  :leaf_node: true
+  :path: "/International Cooperation/Regional Organizations/Economic Cooperation Organization"
+  :subject: http://webprotege.stanford.edu/RDrX1xLUDh7oA05RQ3JXshC
+  :concept_groups:
+  - Trade Regions
+  :broader_terms:
+  - Regional Organizations

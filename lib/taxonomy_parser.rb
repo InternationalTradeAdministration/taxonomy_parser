@@ -1,6 +1,5 @@
 require 'taxonomy_parser/version'
 require 'taxonomy_parser/lookup_methods'
-require 'active_support/core_ext/object/blank'
 require 'nokogiri'
 require 'open-uri'
 require 'zip'
@@ -44,13 +43,12 @@ class TaxonomyParser
     end
   end
 
-  def process_subclass_nodes(node_hash, current_depth = 1, &block)
+  def process_subclass_nodes(node_hash, &block)
     node_hash[:subclass_nodes].each do |child_node|
-      next if @max_depth && current_depth > @max_depth
       child_node_hash = extract_node_hash(child_node, node_hash[:path])
       next if child_node_hash[:subject] == node_hash[:subject] # Handle case where class is parent of itself... gotta love Protege!
-      yield child_node_hash.reject{ |k| [:subclass_nodes, :subject].include?(k) }
-      process_subclass_nodes(child_node_hash, (current_depth + 1), &block)
+      yield child_node_hash.reject{ |k| k == :subclass_nodes }
+      process_subclass_nodes(child_node_hash, &block)
     end
   end
 
@@ -63,7 +61,7 @@ class TaxonomyParser
     subclass_nodes = extract_subclass_nodes(subject)
     { 
       label: label,
-      leaf_node: subclass_nodes.blank?,
+      leaf_node: subclass_nodes.empty?,
       path: path,
       subclass_nodes: subclass_nodes,
       subject: subject,
@@ -108,7 +106,6 @@ class TaxonomyParser
     File.delete('temp.zip')
     Nokogiri::XML(content)
   end
-
 end
 
  
