@@ -32,17 +32,17 @@ describe TaxonomyParser do
       end
     end
 
-    describe '#find_concepts_by_concept_group' do
+    describe '#get_concepts_by_concept_group' do
       it 'returns all concepts that are member of a concept group' do
         expected_concepts_for_countries = @expected_concepts.select{|concept| concept[:concept_groups].include? "Countries" }
-        expect(@parser.find_concepts_by_concept_group('Countries')).to match_array(expected_concepts_for_countries)
+        expect(@parser.get_concepts_by_concept_group('Countries')).to match_array(expected_concepts_for_countries)
       end
     end
 
-    describe '#find_concept_by_label' do
+    describe '#get_concept_by_label' do
       it 'returns the correct concept for a given label' do
         expected_concept_for_label = @expected_concepts.find{|concept| concept[:label] == "Aviation" }
-        expect(@parser.find_concept_by_label("Aviation")).to eq expected_concept_for_label
+        expect(@parser.get_concept_by_label("Aviation")).to eq expected_concept_for_label
       end
     end
 
