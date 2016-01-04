@@ -7,7 +7,7 @@ This gem can be used any time we need the ITA Taxonomy, currently housed as XML 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'taxonomy_parser'
+gem 'taxonomy_parser', github: 'GovWizely/taxonomy_parser'
 ```
 
 And then execute:
