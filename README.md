@@ -43,15 +43,15 @@ Each of these methods will return an array of hashes that contain the following 
 * concept_groups
 * broader_terms
 
-There are few built in lookup methods:
+There are a few built in lookup methods:
 
-`my_parser.get_all_geo_terms_for_country('AF')`
-Returns an array of terms that are a member of World Regions and Trade Regions relating the given ISO-2 country code.  Right now this only accepts a valid ISO-2 code.
+```my_parser.get_all_geo_terms_for_country('AF')```
+Returns an array of terms that are a member of World Regions and Trade Regions relating to the given country.  Right now this only accepts a valid ISO-2 code.
 
-`my_parser.get_concepts_by_concept_group("Countries")`
+```my_parser.get_concepts_by_concept_group("Countries")```
 Returns an array of terms that are a member of the given concept group.
 
-`my_parser.get_concept_by_label('Aviation')`
+```my_parser.get_concept_by_label('Aviation')```
 Returns a single hash term given it's name.
 
 
