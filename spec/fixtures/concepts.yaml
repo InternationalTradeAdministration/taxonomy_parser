@@ -6,6 +6,8 @@
   :concept_groups:
   - Industries
   :broader_terms: []
+  :narrower_terms:
+  - Aviation
 - :label: Aviation
   :leaf_node: true
   :path: "/Aerospace and Defense/Aviation"
@@ -14,6 +16,7 @@
   - Sector
   :broader_terms:
   - Aerospace and Defense
+  :narrower_terms: []
 - :label: Afghanistan
   :leaf_node: true
   :path: "/Afghanistan"
@@ -23,6 +26,7 @@
   :broader_terms:
   - Economic Cooperation Organization
   - Central Asia
+  :narrower_terms: []
 - :label: Asia
   :leaf_node: false
   :path: "/Asia"
@@ -30,6 +34,8 @@
   :concept_groups:
   - World Regions
   :broader_terms: []
+  :narrower_terms:
+  - Central Asia
 - :label: Central Asia
   :leaf_node: true
   :path: "/Asia/Central Asia"
@@ -38,6 +44,8 @@
   - World Regions
   :broader_terms:
   - Asia
+  :narrower_terms:
+  - Afghanistan
 - :label: International Cooperation
   :leaf_node: false
   :path: "/International Cooperation"
@@ -45,6 +53,8 @@
   :concept_groups:
   - Topics
   :broader_terms: []
+  :narrower_terms:
+  - Regional Organizations
 - :label: Regional Organizations
   :leaf_node: false
   :path: "/International Cooperation/Regional Organizations"
@@ -52,6 +62,8 @@
   :concept_groups: []
   :broader_terms:
   - International Cooperation
+  :narrower_terms:
+  - Economic Cooperation Organization
 - :label: Economic Cooperation Organization
   :leaf_node: true
   :path: "/International Cooperation/Regional Organizations/Economic Cooperation Organization"
@@ -60,3 +72,5 @@
   - Trade Regions
   :broader_terms:
   - Regional Organizations
+  :narrower_terms:
+  - Afghanistan

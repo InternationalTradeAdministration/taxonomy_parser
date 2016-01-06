@@ -22,19 +22,19 @@ Or install it yourself as:
 
 Initialize a new parser and call the parse method to download and parse the terms:
 
-```
+```ruby
 my_parser = TaxonomyParser.new
 my_parser.parse
 ```
 
 You can then view the concepts and concept groups by calling their respective methods:
 
-```
+```ruby
 my_parser.concepts
 my_parser.concept_groups
 ```
 
-Each of these methods will return an array of hashes that contain the following fields:
+Each of these methods will return an array of hashes that contain the following symbolized keys:
 
 * label
 * leaf_node
@@ -45,21 +45,25 @@ Each of these methods will return an array of hashes that contain the following 
 
 There are a few built in lookup methods:
 
-```
+```ruby
 my_parser.get_all_geo_terms_for_country('AF')
 ```
 Returns an array of terms that are a member of World Regions and Trade Regions relating to the given country.  Right now this only accepts a valid ISO-2 code.
 
-```
+```ruby
 my_parser.get_concepts_by_concept_group("Countries")
 ```
 Returns an array of terms that are a member of the given concept group.
 
-```
+```ruby
 my_parser.get_concept_by_label('Aviation')
 ```
 Returns a single hash term given it's name.
 
+```ruby
+my_parser.raw_source
+```
+Returns a string containing the raw XML source from Webprotege.
 
 ## Development
 

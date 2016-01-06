@@ -12,25 +12,21 @@ class TaxonomyParser
 
   MEMBER_OF_IRI = 'http://purl.org/umu/uneskos#memberOf'
   BROADER_IRI = 'http://www.w3.org/2004/02/skos/core#broader'
+  NARROWER_IRI = 'http://www.w3.org/2004/02/skos/core#narrower'
+
+  attr_reader :concept_groups, :concepts, :raw_source
 
   def initialize(resource = PROTEGE_URL)
     @resource = resource
     @concepts = []
     @concept_groups = []
-    @xml = extract_xml_from_zip
+    @raw_source = extract_xml_from_zip
+    @xml = Nokogiri::XML(@raw_source)
   end
 
   def parse
     extract_terms(@concept_groups, CONCEPT_GROUP_IRI)
     extract_terms(@concepts, CONCEPT_IRI)
-  end
-
-  def concept_groups
-    @concept_groups
-  end
-
-  def concepts
-    @concepts
   end
 
   private
@@ -58,6 +54,7 @@ class TaxonomyParser
     subject = extract_subject(node)
     concept_groups = extract_additional_property(node, MEMBER_OF_IRI)
     broader_terms = extract_additional_property(node, BROADER_IRI)
+    narrower_terms = extract_additional_property(node, NARROWER_IRI)
     subclass_nodes = extract_subclass_nodes(subject)
     { 
       label: label,
@@ -66,7 +63,8 @@ class TaxonomyParser
       subclass_nodes: subclass_nodes,
       subject: subject,
       concept_groups: concept_groups,
-      broader_terms: broader_terms
+      broader_terms: broader_terms,
+      narrower_terms: narrower_terms
     }
   end
 
@@ -104,7 +102,7 @@ class TaxonomyParser
     end
 
     File.delete('temp.zip')
-    Nokogiri::XML(content)
+    content
   end
 end
 

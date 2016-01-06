@@ -24,6 +24,11 @@ describe TaxonomyParser do
     expect(@parser.concepts).to match_array(@expected_concepts)
   end
 
+  it 'returns the correct raw_source' do
+    expected_raw_source = File.open(File.dirname(__FILE__) + "/fixtures/test_data/root-ontology.owl").read
+    expect(@parser.raw_source).to eq(expected_raw_source)
+  end
+
   context 'LookupMethods module' do
     describe '#get_all_geo_terms_for_country' do
       it 'returns the correct geo_terms for a country' do
