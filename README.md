@@ -42,6 +42,7 @@ Each of these methods will return an array of hashes that contain the following 
 * subject
 * concept_groups
 * broader_terms
+* narrower_terms
 
 There are a few built in lookup methods:
 
