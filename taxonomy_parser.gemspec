@@ -23,4 +23,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "nokogiri", "~> 1.6.7.1"
   spec.add_dependency "rubyzip"
   spec.add_dependency "iso_country_codes"
+  spec.add_development_dependency "webmock"
 end

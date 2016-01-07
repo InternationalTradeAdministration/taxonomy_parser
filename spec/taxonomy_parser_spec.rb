@@ -31,9 +31,21 @@ describe TaxonomyParser do
 
   context 'LookupMethods module' do
     describe '#get_all_geo_terms_for_country' do
-      it 'returns the correct geo_terms for a country' do
+      it 'returns the correct geo_terms for a country code or name' do
         expected_geo_terms = @expected_concepts.select{|concept| ["World Regions", "Trade Regions"].include? concept[:concept_groups].first }
         expect(@parser.get_all_geo_terms_for_country('AF')).to match_array(expected_geo_terms)
+        expect(@parser.get_all_geo_terms_for_country('Afghanistan')).to match_array(expected_geo_terms)
+      end
+    end
+
+    describe '#extract_country_term' do
+      it 'returns term for partial match' do
+        us_term = @expected_concepts.find{|concept| concept[:label] == "United States"}
+        expect(@parser.extract_country_term("United States of America")).to eq(us_term)
+      end
+
+      it 'raises an error when the country term cannot be found from the given name' do
+        expect{@parser.get_all_geo_terms_for_country('United Kingdom')}.to raise_error("Country term can't be found.")
       end
     end
 
@@ -50,6 +62,5 @@ describe TaxonomyParser do
         expect(@parser.get_concept_by_label("Aviation")).to eq expected_concept_for_label
       end
     end
-
   end
 end

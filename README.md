@@ -48,8 +48,9 @@ There are a few built in lookup methods:
 
 ```ruby
 my_parser.get_all_geo_terms_for_country('AF')
+my_parser.get_all_geo_terms_for_country('United States')
 ```
-Returns an array of terms that are a member of World Regions and Trade Regions relating to the given country.  Right now this only accepts a valid ISO-2 code.
+Returns an array of terms that are a member of World Regions and Trade Regions relating to the given country.  This method accepts a country name or ISO-2 code.
 
 ```ruby
 my_parser.get_concepts_by_concept_group("Countries")

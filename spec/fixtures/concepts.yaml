@@ -74,3 +74,11 @@
   - Regional Organizations
   :narrower_terms:
   - Afghanistan
+- :label: United States
+  :leaf_node: true
+  :path: "/United States"
+  :subject: http://webprotege.stanford.edu/RC4HD9CwKjvgX8dSybAp3Sk
+  :concept_groups:
+  - Countries
+  :broader_terms: []
+  :narrower_terms: []
