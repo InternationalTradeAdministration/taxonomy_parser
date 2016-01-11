@@ -1,6 +1,6 @@
 # Taxonomy Parser
 
-This gem can be used any time we need the ITA Taxonomy, currently housed as XML in Webprotege, to be available on a Ruby back end.
+This gem can be used any time there is a need for the ITA Taxonomy, currently housed as XML in Webprotege, to be available on a Ruby back end.
 
 ## Installation
 
@@ -20,10 +20,10 @@ Or install it yourself as:
 
 ## Usage
 
-Initialize a new parser and call the parse method to download and parse the terms:
+Initialize a new parser and call the parse method to download and parse the terms.  A valid path or URL must be provided (to the ZIP file containing the .owl XML):
 
 ```ruby
-my_parser = TaxonomyParser.new
+my_parser = TaxonomyParser.new('path/or/url/to/zip')
 my_parser.parse
 ```
 

@@ -6,7 +6,6 @@ require 'zip'
 
 class TaxonomyParser
   include LookupMethods
-  PROTEGE_URL = 'http://52.4.82.207:8080/webprotege/download?ontology=cafcdef1-058a-41dd-9c6e-19a0bc297c86'
   CONCEPT_GROUP_IRI = 'http://purl.org/iso25964/skos-thes#ConceptGroup'
   CONCEPT_IRI = 'http://www.w3.org/2004/02/skos/core#Concept'
 
@@ -16,7 +15,7 @@ class TaxonomyParser
 
   attr_reader :concept_groups, :concepts, :raw_source
 
-  def initialize(resource = PROTEGE_URL)
+  def initialize(resource)
     @resource = resource
     @concepts = []
     @concept_groups = []
