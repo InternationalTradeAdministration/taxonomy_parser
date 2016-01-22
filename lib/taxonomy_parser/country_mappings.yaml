@@ -1,0 +1,60 @@
+# This file contains mappings between Protege countries (key) and
+# ISO gem spellings (value), as well as any other mispellings we 
+# need to map onto the Protege spellings.
+---
+South Korea:
+- Korea (Republic of)
+Bolivia:
+- Bolivia (Plurinational State of)
+Bonaire:
+- Bonaire, Sint Eustatius and Saba
+Brunei:
+- Brunei Darussalam:
+Cape Verde:
+- Cabo Verde
+Congo-Brazzaville:
+- Congo
+Congo-Kinshasa:
+- Congo (Democratic Republic of the):
+Falkland Islands:
+- Falkland Islands (Malvinas)
+Guinea Bissau:
+- Guinea-Bissau
+Iran:
+- Iran (Islamic Republic of)
+North Korea:
+- Korea (Democratic People's Republic of)
+Laos:
+- Lao People's Democratic Republic
+Macau:
+- Macao
+Macedonia:
+- Macedonia (the former Yugoslav Republic of)
+Micronesia:
+- Micronesia (Federated States of)
+Moldova:
+- Moldova (Republic of)
+Pitcairn:
+- Pitcairn Islands
+Russia:
+- Russian Federation
+Saint Martin:
+- Saint Martin (French part)
+Sint Maarten:
+- Sint Maarten (Dutch part)
+Svalbard:
+- Svalbard and Jan Mayen
+Syria:
+- Syrian Arab Republic
+Taiwan:
+- Taiwan, Province of China
+Tanzania:
+- Tanzania, United Republic of
+United Kingdom:
+- United Kingdom of Great Britain and Northern Ireland
+United States:
+- United States of America
+Venezuela:
+- Venezuela (Bolivarian Republic of)
+Vietnam:
+- Viet Nam

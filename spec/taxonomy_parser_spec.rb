@@ -45,7 +45,7 @@ describe TaxonomyParser do
       end
 
       it 'raises an error when the country term cannot be found from the given name' do
-        expect{@parser.get_all_geo_terms_for_country('United Kingdom')}.to raise_error("Country term can't be found.")
+        expect{@parser.get_all_geo_terms_for_country('United Kingdom')}.to raise_error("Country term can't be found for: United Kingdom")
       end
     end
 

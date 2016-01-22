@@ -13,7 +13,7 @@ class TaxonomyParser
   BROADER_IRI = 'http://www.w3.org/2004/02/skos/core#broader'
   NARROWER_IRI = 'http://www.w3.org/2004/02/skos/core#narrower'
 
-  attr_reader :concept_groups, :concepts, :raw_source
+  attr_accessor :concept_groups, :concepts, :raw_source
 
   def initialize(resource)
     @resource = resource
