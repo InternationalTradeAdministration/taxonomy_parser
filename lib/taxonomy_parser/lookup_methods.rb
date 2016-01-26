@@ -13,6 +13,7 @@ module LookupMethods
     process_broader_terms(country_term) do |broader_term|
       broader_terms.push broader_term
     end
+    broader_terms.uniq!
 
     world_region_terms = get_concepts_by_concept_group("World Regions", broader_terms)
     trade_region_terms = get_concepts_by_concept_group("Trade Regions", broader_terms)
