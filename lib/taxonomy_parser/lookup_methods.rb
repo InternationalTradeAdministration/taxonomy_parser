@@ -57,11 +57,10 @@ module LookupMethods
   def normalize_country(country_str)
     country_name_mappings = YAML.load_file(File.dirname(__FILE__) + "/country_mappings.yaml")
 
-    mapping = country_name_mappings.select do |key, array|
+    mapping = country_name_mappings.select do |_key, array|
       array.include? country_str
     end
 
     mapping.empty? ? country_str : mapping.keys.first
   end
-
 end

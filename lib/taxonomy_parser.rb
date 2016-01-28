@@ -69,9 +69,9 @@ class TaxonomyParser
 
   def extract_additional_property(node, iri)
     internal_nodes = node.xpath("./rdfs:subClassOf/owl:Restriction[owl:onProperty[@rdf:resource='#{iri}']]")
-    related_subjects = internal_nodes.map{ |node| node.xpath('./owl:someValuesFrom').first.attr('rdf:resource')}.flatten
+    related_subjects = internal_nodes.map{ |n| n.xpath('./owl:someValuesFrom').first.attr('rdf:resource')}.flatten
     related_nodes = related_subjects.map{ |subject| @xml.xpath("//owl:Class[@rdf:about='#{subject}']")}.flatten
-    related_nodes.map{|node| extract_label(node) }
+    related_nodes.map{|n| extract_label(n) }
   end
 
   def extract_label(node)
