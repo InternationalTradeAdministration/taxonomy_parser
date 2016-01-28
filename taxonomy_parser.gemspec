@@ -24,4 +24,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rubyzip", "1.1.7"
   spec.add_dependency "iso_country_codes", "0.7.4"
   spec.add_development_dependency "webmock"
+  spec.add_dependency 'codeclimate-test-reporter'
 end
