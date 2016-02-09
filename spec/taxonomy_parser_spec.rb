@@ -61,6 +61,11 @@ describe TaxonomyParser do
         expected_concept_for_label = @expected_concepts.find{|concept| concept[:label] == "Aviation" }
         expect(@parser.get_concept_by_label("Aviation")).to eq expected_concept_for_label
       end
+
+      it 'returns the correct concept for a label that requires a mapping lookup' do
+        expected_concept_for_label = @expected_concepts.find{|concept| concept[:label] == "Aviation" }
+        expect(@parser.get_concept_by_label("Avi ation")).to eq expected_concept_for_label
+      end
     end
   end
 end

@@ -26,6 +26,8 @@ module LookupMethods
   end
 
   def get_concept_by_label(label)
+    sf_mappings = YAML.load_file(File.dirname(__FILE__) + "/salesforce_label_mappings.yaml")
+    label = sf_mappings[label] if sf_mappings.has_key?(label)
     concepts.find{ |concept| concept[:label] == label }
   end
 
