@@ -3,6 +3,7 @@ require 'taxonomy_parser/lookup_methods'
 require 'nokogiri'
 require 'open-uri'
 require 'zip'
+require 'tempfile'
 
 class TaxonomyParser
   include LookupMethods
@@ -91,16 +92,18 @@ class TaxonomyParser
   end
 
   def extract_xml_from_zip
-    open('temp.zip', 'wb') { |file| file << open(@resource).read }
+    file = Tempfile.new(['protege', '.zip'], File.dirname(__FILE__))
+    file.write(open(@resource).read)
+    file.close
 
     content = ''
-    Zip::File.open('temp.zip') do |zip_file|
+    Zip::File.open(file.path) do |zip_file|
       zip_file.each do |entry|
         content += entry.get_input_stream.read if entry.name.end_with?('.owl')
       end
     end
 
-    File.delete('temp.zip')
+    file.unlink
     content
   end
 end

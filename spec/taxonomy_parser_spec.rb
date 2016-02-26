@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'yaml'
 
 describe TaxonomyParser do
-  before do
+  before(:all) do
     data_dir = File.dirname(__FILE__) + "/fixtures/test_data.zip"
     @parser = TaxonomyParser.new(data_dir)
     @parser.parse

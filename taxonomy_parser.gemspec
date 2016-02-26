@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_dependency "nokogiri", "1.6.7.1"
-  spec.add_dependency "rubyzip", "1.1.7"
+  spec.add_dependency "rubyzip", "1.2.0"
   spec.add_dependency "iso_country_codes", "0.7.4"
   spec.add_development_dependency "webmock"
   spec.add_dependency 'codeclimate-test-reporter'
