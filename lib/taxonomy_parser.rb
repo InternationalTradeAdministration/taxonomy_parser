@@ -5,6 +5,8 @@ require 'open-uri'
 require 'zip'
 require 'tempfile'
 
+require 'pp'
+
 class TaxonomyParser
   include LookupMethods
   CONCEPT_GROUP_IRI = 'http://purl.org/iso25964/skos-thes#ConceptGroup'
@@ -22,9 +24,11 @@ class TaxonomyParser
     @concept_groups = []
     @raw_source = extract_xml_from_zip
     @xml = Nokogiri::XML(@raw_source)
+    @xml.remove_namespaces!
   end
 
   def parse
+    #File.open("combined.xml", 'w'){|f| f.write(@xml)}
     extract_terms(@concept_groups, CONCEPT_GROUP_IRI)
     extract_terms(@concepts, CONCEPT_IRI)
   end
@@ -32,7 +36,7 @@ class TaxonomyParser
   private
 
   def extract_terms(terms, iri)
-    root_node = @xml.xpath("//rdf:Description[@rdf:about='#{iri}']").first
+    root_node = @xml.xpath("//Description[@about='#{iri}']").first
     root_node_hash = extract_node_hash(root_node)
     process_subclass_nodes(root_node_hash) do |node_hash|
       terms.push node_hash
@@ -52,19 +56,23 @@ class TaxonomyParser
     label = extract_label(node)
     path = build_path(parent_path, label)
     subject = extract_subject(node)
-    concept_groups = extract_additional_property(node, MEMBER_OF_IRI)
-    broader_terms = extract_additional_property(node, BROADER_IRI)
-    narrower_terms = extract_additional_property(node, NARROWER_IRI)
+    #concept_groups = extract_additional_property(node, MEMBER_OF_IRI)
+    #broader_terms = extract_additional_property(node, BROADER_IRI)
+    #narrower_terms = extract_additional_property(node, NARROWER_IRI)
     subclass_nodes = extract_subclass_nodes(subject)
+
+    extract_properties(node)
+
     { 
       label: label,
       leaf_node: subclass_nodes.empty?,
       path: path,
       subclass_nodes: subclass_nodes,
       subject: subject,
-      concept_groups: concept_groups,
-      broader_terms: broader_terms,
-      narrower_terms: narrower_terms
+      #concept_groups: concept_groups,
+      #broader_terms: broader_terms,
+      #narrower_terms: narrower_terms,
+
     }
   end
 
@@ -75,8 +83,50 @@ class TaxonomyParser
     related_nodes.map{|n| extract_label(n) }
   end
 
+  def extract_properties(node)
+    property_nodes = node.xpath("./subClassOf/Restriction")
+
+    datatype_properties = {}
+    object_properties = {}
+
+    property_nodes.each do |property_node|
+      property_iri = property_node.xpath('./onProperty').first.attr('resource')
+
+      #puts property_iri
+
+      object_source_node = @xml.xpath("//ObjectProperty[@about='#{property_iri}']").first
+      extract_object_property(property_node, object_source_node, object_properties) unless object_source_node.nil?
+
+      datatype_source_node = @xml.xpath("//DatatypeProperty[@about='#{property_iri}']").first
+
+      if datatype_source_node.nil? && object_source_node.nil?
+        fail "Not an Object or Data property: #{property_iri}"
+      elsif !datatype_source_node.nil?
+        extract_datatype_property(property_node, datatype_source_node, datatype_properties)
+      end
+      
+    end
+
+    pp datatype_properties
+    #pp object_properties
+  end
+
+  def extract_datatype_property(property_node, datatype_source_node, datatype_properties)
+    target_value = property_node.xpath('./hasValue').text
+    property_key = extract_label(datatype_source_node).gsub(' ', '_').to_sym
+    datatype_properties[property_key] = [] unless datatype_properties.has_key?(property_key)
+    datatype_properties[property_key] << target_value
+  end
+
+  def extract_object_property(property_node, object_source_node, object_properties)
+    target_id = property_node.xpath('./someValuesFrom').first.attr('resource')
+    property_key = extract_label(object_source_node).gsub(' ', '_').to_sym
+    object_properties[property_key] = [] unless object_properties.has_key?(property_key)
+    object_properties[property_key] << {id: target_id}
+  end
+
   def extract_label(node)
-    node.xpath('./rdfs:label').text
+    node.xpath('./label').text
   end
 
   def build_path(parent_path, label)
@@ -84,11 +134,11 @@ class TaxonomyParser
   end
 
   def extract_subject(node)
-    node.attr('rdf:about')
+    node.attr('about')
   end
 
   def extract_subclass_nodes(subject)
-    @xml.xpath "//owl:Class[rdfs:subClassOf[@rdf:resource='#{subject}']]"
+    @xml.xpath "//Class[subClassOf[@resource='#{subject}']]"
   end
 
   def extract_xml_from_zip
@@ -96,14 +146,15 @@ class TaxonomyParser
     file.write(open(@resource).read)
     file.close
 
-    content = ''
+    content = '<?xml version="1.0"?><root>'
     Zip::File.open(file.path) do |zip_file|
       zip_file.each do |entry|
-        content += entry.get_input_stream.read if entry.name.end_with?('.owl')
+        content << entry.get_input_stream.read if entry.name.end_with?('.owl')
       end
     end
 
     file.unlink
+    content << '</root>'
     content
   end
 end
