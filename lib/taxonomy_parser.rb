@@ -92,7 +92,7 @@ class TaxonomyParser
   end
 
   def extract_xml_from_zip
-    file = Tempfile.new(['protege', '.zip'], File.dirname(__FILE__))
+    file = Tempfile.new(['protege', '.zip'], File.dirname(__FILE__), :encoding => 'ascii-8bit')
     file.write(open(@resource).read)
     file.close
 
