@@ -40,6 +40,10 @@ module LookupMethods
 
   private
 
+  def find_by_id(id, terms)
+    terms.find{ |term| term[:subject] == id }
+  end
+
   def process_broader_terms(term, &block)
     term[:broader_terms].each do |broader_label|
       broader_term = get_concept_by_label(broader_label)

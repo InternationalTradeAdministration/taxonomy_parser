@@ -1,20 +1,18 @@
 require 'taxonomy_parser/version'
-require 'taxonomy_parser/lookup_methods'
 require 'nokogiri'
 require 'open-uri'
 require 'zip'
 require 'tempfile'
+Dir[File.dirname(__FILE__) + "/taxonomy_parser/modules/*.rb"].each {|file| require file }
 
-require 'pp'
 
 class TaxonomyParser
   include LookupMethods
+  include PropertyExtractor
+  include PostProcessing
   CONCEPT_GROUP_IRI = 'http://purl.org/iso25964/skos-thes#ConceptGroup'
   CONCEPT_IRI = 'http://www.w3.org/2004/02/skos/core#Concept'
-
-  MEMBER_OF_IRI = 'http://purl.org/umu/uneskos#memberOf'
-  BROADER_IRI = 'http://www.w3.org/2004/02/skos/core#broader'
-  NARROWER_IRI = 'http://www.w3.org/2004/02/skos/core#narrower'
+  CONCEPT_SCHEME_IRI = 'http://www.w3.org/2004/02/skos/core#ConceptScheme'
 
   attr_accessor :concept_groups, :concepts, :raw_source
 
@@ -22,15 +20,17 @@ class TaxonomyParser
     @resource = resource
     @concepts = []
     @concept_groups = []
+    @concept_schemes = []
     @raw_source = extract_xml_from_zip
     @xml = Nokogiri::XML(@raw_source)
     @xml.remove_namespaces!
   end
 
   def parse
-    #File.open("combined.xml", 'w'){|f| f.write(@xml)}
     extract_terms(@concept_groups, CONCEPT_GROUP_IRI)
     extract_terms(@concepts, CONCEPT_IRI)
+    extract_terms(@concept_schemes, CONCEPT_SCHEME_IRI)
+    perform_additional_processing
   end
 
   private
@@ -45,84 +45,24 @@ class TaxonomyParser
 
   def process_subclass_nodes(node_hash, &block)
     node_hash[:subclass_nodes].each do |child_node|
-      child_node_hash = extract_node_hash(child_node, node_hash[:path])
+      child_node_hash = extract_node_hash(child_node)
       next if child_node_hash[:subject] == node_hash[:subject] # Handle case where class is parent of itself... gotta love Protege!
       yield child_node_hash.reject{ |k| k == :subclass_nodes }
       process_subclass_nodes(child_node_hash, &block)
     end
   end
 
-  def extract_node_hash(node, parent_path = nil)
-    label = extract_label(node)
-    path = build_path(parent_path, label)
+  def extract_node_hash(node)
     subject = extract_subject(node)
-    #concept_groups = extract_additional_property(node, MEMBER_OF_IRI)
-    #broader_terms = extract_additional_property(node, BROADER_IRI)
-    #narrower_terms = extract_additional_property(node, NARROWER_IRI)
     subclass_nodes = extract_subclass_nodes(subject)
+    properties = extract_properties(node)
 
-    extract_properties(node)
-
-    { 
-      label: label,
+    properties.merge({ 
       leaf_node: subclass_nodes.empty?,
-      path: path,
       subclass_nodes: subclass_nodes,
       subject: subject,
-      #concept_groups: concept_groups,
-      #broader_terms: broader_terms,
-      #narrower_terms: narrower_terms,
-
-    }
-  end
-
-  def extract_additional_property(node, iri)
-    internal_nodes = node.xpath("./rdfs:subClassOf/owl:Restriction[owl:onProperty[@rdf:resource='#{iri}']]")
-    related_subjects = internal_nodes.map{ |n| n.xpath('./owl:someValuesFrom').first.attr('rdf:resource')}.flatten
-    related_nodes = related_subjects.map{ |subject| @xml.xpath("//owl:Class[@rdf:about='#{subject}']")}.flatten
-    related_nodes.map{|n| extract_label(n) }
-  end
-
-  def extract_properties(node)
-    property_nodes = node.xpath("./subClassOf/Restriction")
-
-    datatype_properties = {}
-    object_properties = {}
-
-    property_nodes.each do |property_node|
-      property_iri = property_node.xpath('./onProperty').first.attr('resource')
-
-      #puts property_iri
-
-      object_source_node = @xml.xpath("//ObjectProperty[@about='#{property_iri}']").first
-      extract_object_property(property_node, object_source_node, object_properties) unless object_source_node.nil?
-
-      datatype_source_node = @xml.xpath("//DatatypeProperty[@about='#{property_iri}']").first
-
-      if datatype_source_node.nil? && object_source_node.nil?
-        fail "Not an Object or Data property: #{property_iri}"
-      elsif !datatype_source_node.nil?
-        extract_datatype_property(property_node, datatype_source_node, datatype_properties)
-      end
-      
-    end
-
-    pp datatype_properties
-    #pp object_properties
-  end
-
-  def extract_datatype_property(property_node, datatype_source_node, datatype_properties)
-    target_value = property_node.xpath('./hasValue').text
-    property_key = extract_label(datatype_source_node).gsub(' ', '_').to_sym
-    datatype_properties[property_key] = [] unless datatype_properties.has_key?(property_key)
-    datatype_properties[property_key] << target_value
-  end
-
-  def extract_object_property(property_node, object_source_node, object_properties)
-    target_id = property_node.xpath('./someValuesFrom').first.attr('resource')
-    property_key = extract_label(object_source_node).gsub(' ', '_').to_sym
-    object_properties[property_key] = [] unless object_properties.has_key?(property_key)
-    object_properties[property_key] << {id: target_id}
+      #xml_source: node.to_s,
+    })
   end
 
   def extract_label(node)
