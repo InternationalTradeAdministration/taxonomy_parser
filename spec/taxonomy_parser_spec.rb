@@ -6,6 +6,7 @@ describe TaxonomyParser do
     data_dir = File.dirname(__FILE__) + "/fixtures/test_data.zip"
     @parser = TaxonomyParser.new(data_dir)
     @parser.parse
+
     @expected_concepts = YAML.load_file(File.dirname(__FILE__) + "/fixtures/concepts.yaml")
     @expected_concept_groups = YAML.load_file(File.dirname(__FILE__) + "/fixtures/concept_groups.yaml")
   end
@@ -25,14 +26,16 @@ describe TaxonomyParser do
   end
 
   it 'returns the correct raw_source' do
-    expected_raw_source = File.open(File.dirname(__FILE__) + "/fixtures/test_data/root-ontology.owl").read
+    File.open(File.dirname(__FILE__) + "/fixtures/raw_source.xml", 'w'){|f| f.write(@parser.raw_source)}
+    expected_raw_source = File.open(File.dirname(__FILE__) + "/fixtures/raw_source.xml").read
     expect(@parser.raw_source).to eq(expected_raw_source)
   end
 
   context 'LookupMethods module' do
     describe '#get_all_geo_terms_for_country' do
       it 'returns the correct geo_terms for a country code or name' do
-        expected_geo_terms = @expected_concepts.select{|concept| ["World Regions", "Trade Regions"].include? concept[:concept_groups].first }
+
+        expected_geo_terms = @expected_concepts.select{|concept| ["World Regions", "Trade Regions"].include? concept[:object_properties][:member_of].first[:label] rescue nil}
         expect(@parser.get_all_geo_terms_for_country('AF')).to match_array(expected_geo_terms)
         expect(@parser.get_all_geo_terms_for_country('Afghanistan')).to match_array(expected_geo_terms)
       end
@@ -51,7 +54,7 @@ describe TaxonomyParser do
 
     describe '#get_concepts_by_concept_group' do
       it 'returns all concepts that are member of a concept group' do
-        expected_concepts_for_countries = @expected_concepts.select{|concept| concept[:concept_groups].include? "Countries" }
+        expected_concepts_for_countries = @expected_concepts.select{|concept| concept[:object_properties][:member_of].map{|p| p[:label]}.include? "Countries" rescue nil}
         expect(@parser.get_concepts_by_concept_group('Countries')).to match_array(expected_concepts_for_countries)
       end
     end

@@ -1,43 +1,63 @@
 ---
 - :label: Countries
+  :subClassOf: []
+  :comment: The International Standards Organization (ISO) maintains a list of country
+    codes since 1974. Other standards bodies have adopted the ISO 3166 code list.
+  :source: ISO 3166
+  :prefLabel: Countries
+  :datatype_properties: {}
+  :object_properties: {}
   :leaf_node: true
-  :path: "/Countries"
   :subject: http://webprotege.stanford.edu/R8W91u35GBegWcXXFflYE4
-  :concept_groups: []
-  :broader_terms: []
-  :narrower_terms: []
 - :label: Industries
+  :subClassOf: []
+  :source: ITA
+  :prefLabel: Industries
+  :datatype_properties: {}
+  :object_properties:
+    :micro-thesaurus_of:
+    - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
   :leaf_node: false
-  :path: "/Industries"
   :subject: http://webprotege.stanford.edu/R79uIjoQaQ9KzvJfyB1H7Ru
-  :concept_groups: []
-  :broader_terms: []
-  :narrower_terms: []
 - :label: Sector
+  :subClassOf:
+  - :id: http://webprotege.stanford.edu/R79uIjoQaQ9KzvJfyB1H7Ru
+    :label: Industries
+  :prefLabel: Sector
+  :altLabel: Industry Sector
+  :source: ITA
+  :datatype_properties: {}
+  :object_properties: {}
   :leaf_node: true
-  :path: "/Industries/Sector"
   :subject: http://webprotege.stanford.edu/RwdbpCsGlOI2iwaG4UqDl0
-  :concept_groups: []
-  :broader_terms: []
-  :narrower_terms: []
 - :label: Topics
+  :subClassOf: []
+  :source: UNCTAD/WTO
+  :prefLabel: Topics
+  :datatype_properties: {}
+  :object_properties:
+    :micro-thesaurus_of:
+    - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
   :leaf_node: true
-  :path: "/Topics"
   :subject: http://webprotege.stanford.edu/RBBed4Voz7iS3nUECA3yzNM
-  :concept_groups: []
-  :broader_terms: []
-  :narrower_terms: []
 - :label: Trade Regions
+  :subClassOf: []
+  :altLabel: Economic Groupings
+  :prefLabel: Trade Regions
+  :comment: Trade regions as defined by the International Trade Administration
+  :datatype_properties: {}
+  :object_properties:
+    :micro-thesaurus_of:
+    - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
   :leaf_node: false
-  :path: "/Trade Regions"
   :subject: http://webprotege.stanford.edu/R7ySyiNxcfeZ6bfNjhocNun
-  :concept_groups: []
-  :broader_terms: []
-  :narrower_terms: []
 - :label: World Regions
+  :subClassOf: []
+  :source: ITA
+  :prefLabel: World Regions
+  :datatype_properties: {}
+  :object_properties:
+    :micro-thesaurus_of:
+    - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
   :leaf_node: true
-  :path: "/World Regions"
   :subject: http://webprotege.stanford.edu/R8cndKa2D8NuNg7djwJcXxB
-  :concept_groups: []
-  :broader_terms: []
-  :narrower_terms: []

@@ -5,7 +5,6 @@ require 'zip'
 require 'tempfile'
 Dir[File.dirname(__FILE__) + "/taxonomy_parser/modules/*.rb"].each {|file| require file }
 
-
 class TaxonomyParser
   include LookupMethods
   include PropertyExtractor
@@ -14,7 +13,7 @@ class TaxonomyParser
   CONCEPT_IRI = 'http://www.w3.org/2004/02/skos/core#Concept'
   CONCEPT_SCHEME_IRI = 'http://www.w3.org/2004/02/skos/core#ConceptScheme'
 
-  attr_accessor :concept_groups, :concepts, :raw_source
+  attr_accessor :concept_groups, :concepts, :concept_schemes, :raw_source
 
   def initialize(resource)
     @resource = resource
@@ -30,13 +29,13 @@ class TaxonomyParser
     extract_terms(@concept_groups, CONCEPT_GROUP_IRI)
     extract_terms(@concepts, CONCEPT_IRI)
     extract_terms(@concept_schemes, CONCEPT_SCHEME_IRI)
-    perform_additional_processing
+    post_processing
   end
 
   private
 
   def extract_terms(terms, iri)
-    root_node = @xml.xpath("//Description[@about='#{iri}']").first
+    root_node = @xml.xpath("//Class[@about='#{iri}']").first
     root_node_hash = extract_node_hash(root_node)
     process_subclass_nodes(root_node_hash) do |node_hash|
       terms.push node_hash
@@ -56,7 +55,7 @@ class TaxonomyParser
     subject = extract_subject(node)
     subclass_nodes = extract_subclass_nodes(subject)
     properties = extract_properties(node)
-
+ 
     properties.merge({ 
       leaf_node: subclass_nodes.empty?,
       subclass_nodes: subclass_nodes,
@@ -67,10 +66,6 @@ class TaxonomyParser
 
   def extract_label(node)
     node.xpath('./label').text
-  end
-
-  def build_path(parent_path, label)
-    label.empty? ? "" : "#{parent_path}/#{label}"
   end
 
   def extract_subject(node)
@@ -98,6 +93,3 @@ class TaxonomyParser
     content
   end
 end
-
- 
-
