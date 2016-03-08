@@ -9,24 +9,13 @@ module LookupMethods
 
     country_term = extract_country_term(country_name)
 
-    broader_terms = []
-    process_broader_terms(country_term) do |broader_term|
-      broader_terms.push broader_term
-    end
-    broader_terms.uniq!
+    broader_terms = extract_broader(country_term)
+    related_terms = extract_related(country_term)
 
     world_region_terms = get_concepts_by_concept_group("World Regions", broader_terms)
-    trade_region_terms = get_concepts_by_concept_group("Trade Regions", broader_terms)
-    related_term_labels = extract_object_property_labels(country_term, :has_related)
-    related_terms = related_term_labels.map{|label| get_concept_by_label(label) }
+    trade_region_terms = get_concepts_by_concept_group("Trade Regions", broader_terms + related_terms)
 
-    trade_region_terms.concat(get_concepts_by_concept_group("Trade Regions", related_terms))
-
-    return world_region_terms + trade_region_terms
-  end
-
-  def get_parents_for_geo_term(geo_term)
-
+    world_region_terms + trade_region_terms
   end
 
   def get_concepts_by_concept_group(concept_group, terms = concepts)
@@ -57,12 +46,25 @@ module LookupMethods
     terms.find{ |term| term[:subject] == id }
   end
 
-  def process_broader_terms(term, &block)
-    broader_labels = extract_object_property_labels(term, :has_broader)
-    broader_labels.each do |broader_label|
-      broader_term = get_concept_by_label(broader_label)
-      yield broader_term if broader_term
-      process_broader_terms(broader_term, &block) if broader_term
+  def extract_related(term)
+    related_term_labels = extract_object_property_labels(term, :has_related)
+    related_term_labels.map{|label| get_concept_by_label(label) }
+  end
+
+  def extract_broader(term)
+    broader_terms = []
+    process_tree_property(term, :has_broader) do |broader_term|
+      broader_terms.push broader_term
+    end
+    broader_terms.uniq
+  end
+
+  def process_tree_property(term, property_key, &block)
+    labels = extract_object_property_labels(term, property_key)
+    labels.each do |label|
+      term = get_concept_by_label(label)
+      yield term if term
+      process_tree_property(term, property_key, &block) if term
     end
   end
 
