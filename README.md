@@ -34,12 +34,13 @@ my_parser.concepts
 my_parser.concept_groups
 ```
 
-Each of these methods will return an array of hashes that contain at least the following symbolized keys:
+Each of these methods will return an array of hashes that contain the following symbolized keys:
 
 * label
 * leaf_node
 * subject
 * subClassOf
+* annotations
 * datatype_properties
 * object_properties
 

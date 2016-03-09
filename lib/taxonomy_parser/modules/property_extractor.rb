@@ -5,7 +5,7 @@ module PropertyExtractor
   def extract_properties(node)
     datatype_properties = {}
     object_properties = {}
-    all_fields = extract_leaf_nodes(node)
+    all_fields = extract_leaf_properties(node)
 
     property_nodes = node.xpath("./subClassOf/Restriction")
 
@@ -17,10 +17,14 @@ module PropertyExtractor
     all_fields.merge(combined_properties)
   end
 
-  def extract_leaf_nodes(node)
+  def extract_leaf_properties(node)
     leaf_nodes = node.xpath("./*[not(child::*)]")
-    leaf_properties = leaf_nodes.map{|node| { node.name.gsub(' ', '_').to_sym => node.text} }.reduce Hash.new, :merge
+    leaf_properties = {}
+    leaf_properties[:annotations] = leaf_nodes.map{|node| { node.name.gsub(' ', '_').to_sym => node.text} }.reduce Hash.new, :merge
     leaf_properties[:subClassOf] = extract_parent_ids(leaf_nodes)
+    leaf_properties[:label] = leaf_properties[:annotations][:label]
+    leaf_properties[:annotations].delete(:label)
+    leaf_properties[:annotations].delete(:subClassOf)
     leaf_properties
   end
 

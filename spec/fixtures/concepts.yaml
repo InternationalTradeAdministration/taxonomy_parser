@@ -1,9 +1,10 @@
 ---
-- :label: Aerospace and Defense
+- :annotations:
+    :source: ITA
+    :altLabel: Defense Industry
+    :prefLabel: Aerospace and Defense
   :subClassOf: []
-  :source: ITA
-  :altLabel: Defense Industry
-  :prefLabel: Aerospace and Defense
+  :label: Aerospace and Defense
   :datatype_properties: {}
   :object_properties:
     :member_of:
@@ -18,16 +19,17 @@
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
   :leaf_node: false
   :subject: http://webprotege.stanford.edu/R8CoATsjiZSLAZF4Aaz6kK6
-- :label: Aviation
+- :annotations:
+    :altLabel: Aviation Industry
+    :definition: The industry involved in the operation of commercial, non-military
+      passenger and cargo transportation by air. The category features aviation transport
+      businesses and organizations, as well as those providing supplies and services
+      to this industry.
+    :prefLabel: Aviation
   :subClassOf:
   - :id: http://webprotege.stanford.edu/R8CoATsjiZSLAZF4Aaz6kK6
     :label: Aerospace and Defense
-  :altLabel: Aviation Industry
-  :definition: The industry involved in the operation of commercial, non-military
-    passenger and cargo transportation by air. The category features aviation transport
-    businesses and organizations, as well as those providing supplies and services
-    to this industry.
-  :prefLabel: Aviation
+  :label: Aviation
   :datatype_properties: {}
   :object_properties:
     :is_in_scheme:
@@ -47,10 +49,11 @@
       :label: Aerospace and Defense
   :leaf_node: true
   :subject: http://webprotege.stanford.edu/RDBsKPGzqliWT5godmR5PDV
-- :label: Afghanistan
+- :annotations:
+    :prefLabel: Afghanistan
+    :source: ISO 3166
   :subClassOf: []
-  :prefLabel: Afghanistan
-  :source: ISO 3166
+  :label: Afghanistan
   :datatype_properties:
     :countryCodeUNNumeric3:
     - '4'
@@ -75,10 +78,11 @@
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
   :leaf_node: true
   :subject: http://webprotege.stanford.edu/RDzjXT0GYF9ecQbq6oyxewD
-- :label: Asia
+- :annotations:
+    :prefLabel: Asia
+    :source: ITA
   :subClassOf: []
-  :prefLabel: Asia
-  :source: ITA
+  :label: Asia
   :datatype_properties: {}
   :object_properties:
     :has_related:
@@ -98,12 +102,13 @@
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
   :leaf_node: false
   :subject: http://webprotege.stanford.edu/R91fGuW6GPOnb7XSylIPwR5
-- :label: Central Asia
+- :annotations:
+    :prefLabel: Central Asia
+    :source: ITA
   :subClassOf:
   - :id: http://webprotege.stanford.edu/R91fGuW6GPOnb7XSylIPwR5
     :label: Asia
-  :prefLabel: Central Asia
-  :source: ITA
+  :label: Central Asia
   :datatype_properties: {}
   :object_properties:
     :has_related:
@@ -128,10 +133,11 @@
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
   :leaf_node: true
   :subject: http://webprotege.stanford.edu/R9pQ9NO7LyXj7vL7WbTAVVA
-- :label: International Cooperation
+- :annotations:
+    :prefLabel: International Cooperation
+    :altLabel: International Relations
   :subClassOf: []
-  :prefLabel: International Cooperation
-  :altLabel: International Relations
+  :label: International Cooperation
   :datatype_properties: {}
   :object_properties:
     :has_narrower:
@@ -161,15 +167,16 @@
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
   :leaf_node: false
   :subject: http://webprotege.stanford.edu/RBUhToH9SFoFVriuHfHzcvT
-- :label: Regional Organizations
+- :annotations:
+    :source: UNCTAD/WTO
+    :definition: An organization, the members of which are nations in the same geographical
+      region of the world; or a group of countries undergoing economic integration
+      according to international treaties.
+    :prefLabel: Regional Organizations
   :subClassOf:
   - :id: http://webprotege.stanford.edu/RBUhToH9SFoFVriuHfHzcvT
     :label: International Cooperation
-  :source: UNCTAD/WTO
-  :definition: An organization, the members of which are nations in the same geographical
-    region of the world; or a group of countries undergoing economic integration according
-    to international treaties.
-  :prefLabel: Regional Organizations
+  :label: Regional Organizations
   :datatype_properties: {}
   :object_properties:
     :has_narrower:
@@ -194,13 +201,14 @@
       :label: International Cooperation
   :leaf_node: false
   :subject: http://webprotege.stanford.edu/RBb72pZnfGSZApKbgfMfARC
-- :label: Economic Cooperation Organization
+- :annotations:
+    :prefLabel: Economic Cooperation Organization
+    :source: UNCTAD/WTO
+    :altLabel: ECO
   :subClassOf:
   - :id: http://webprotege.stanford.edu/RBb72pZnfGSZApKbgfMfARC
     :label: Regional Organizations
-  :prefLabel: Economic Cooperation Organization
-  :source: UNCTAD/WTO
-  :altLabel: ECO
+  :label: Economic Cooperation Organization
   :datatype_properties: {}
   :object_properties:
     :has_related:
@@ -228,11 +236,12 @@
       :label: Regional Organizations
   :leaf_node: true
   :subject: http://webprotege.stanford.edu/RDrX1xLUDh7oA05RQ3JXshC
-- :label: United States
+- :annotations:
+    :source: ISO 3166
+    :altLabel: US
+    :prefLabel: United States
   :subClassOf: []
-  :source: ISO 3166
-  :altLabel: US
-  :prefLabel: United States
+  :label: United States
   :datatype_properties: {}
   :object_properties:
     :has_narrower:
