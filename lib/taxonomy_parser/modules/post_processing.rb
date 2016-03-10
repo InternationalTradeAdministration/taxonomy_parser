@@ -11,7 +11,7 @@ module PostProcessing
   end
 
   def assign_labels_to_parents(term)
-    term[:subClassOf].delete_if do |parent|
+    term[:sub_class_of].delete_if do |parent|
       parent_term = find_by_id(parent[:id])
       if (parent_term.nil? || parent_term[:subject] == term[:subject])
         true

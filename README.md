@@ -37,9 +37,8 @@ my_parser.concept_groups
 Each of these methods will return an array of hashes that contain the following symbolized keys:
 
 * label
-* leaf_node
 * subject
-* subClassOf
+* sub_class_of
 * annotations
 * datatype_properties
 * object_properties
@@ -47,11 +46,11 @@ Each of these methods will return an array of hashes that contain the following 
 There are other possible fields as well, depending on the source data.  An example concept showing the structure:
 ```ruby
  {:label=>"Market Research Services",
-  :subClassOf=>
+  :sub_class_of=>
    [{:id=>"http://webprotege.stanford.edu/RZAYCEhJ1RvOk65kuqHWF7",
      :label=>"Marketing Services"}],
   :source=>"ITA",
-  :prefLabel=>"Market Research Services",
+  :pref_label=>"Market Research Services",
   :datatype_properties=>{},
   :object_properties=>
    {:has_broader=>
@@ -60,7 +59,6 @@ There are other possible fields as well, depending on the source data.  An examp
     :member_of=>
      [{:id=>"http://webprotege.stanford.edu/RCSUVZOLMw17ZnTq4SY2JcX",
        :label=>"Product Class"}]},
-  :leaf_node=>true,
   :subject=>"http://webprotege.stanford.edu/RDV1ccixsBYCOyBPN4RYvkw"}
 ```
 

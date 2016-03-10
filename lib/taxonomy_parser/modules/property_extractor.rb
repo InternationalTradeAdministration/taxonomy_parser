@@ -20,11 +20,11 @@ module PropertyExtractor
   def extract_leaf_properties(node)
     leaf_nodes = node.xpath("./*[not(child::*)]")
     leaf_properties = {}
-    leaf_properties[:annotations] = leaf_nodes.map{|node| { node.name.gsub(' ', '_').to_sym => node.text} }.reduce Hash.new, :merge
-    leaf_properties[:subClassOf] = extract_parent_ids(leaf_nodes)
+    leaf_properties[:annotations] = leaf_nodes.map{|node| { generate_key(node.name) => node.text} }.reduce Hash.new, :merge
+    leaf_properties[:sub_class_of] = extract_parent_ids(leaf_nodes)
     leaf_properties[:label] = leaf_properties[:annotations][:label]
     leaf_properties[:annotations].delete(:label)
-    leaf_properties[:annotations].delete(:subClassOf)
+    leaf_properties[:annotations].delete(:sub_class_of)
     leaf_properties
   end
 
@@ -52,18 +52,32 @@ module PropertyExtractor
 
   def extract_datatype_property(property_node, datatype_source_node, datatype_properties)
     target_value = property_node.xpath('./hasValue').text
-    property_key = extract_label(datatype_source_node).gsub(' ', '_').to_sym
+    property_key = generate_key(extract_label(datatype_source_node))
     add_property(datatype_properties, property_key, target_value)
   end
 
   def extract_object_property(property_node, object_source_node, object_properties)
     target_id = property_node.xpath('./someValuesFrom').first.attr('resource') rescue property_node.xpath('./hasValue').first.attr('resource')
-    property_key = extract_label(object_source_node).gsub(' ', '_').to_sym
+    property_key = generate_key(extract_label(object_source_node))
     add_property(object_properties, property_key, {id: target_id})
   end
 
   def add_property(hash, key, value)
     hash[key] = [] unless hash.has_key?(key)
     hash[key] << value
+  end
+
+  def generate_key(string)
+    string.gsub(' ', '_').underscore.to_sym
+  end
+end
+
+class String
+  def underscore
+    self.gsub(/::/, '/').
+    gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
+    gsub(/([a-z\d])([A-Z])/,'\1_\2').
+    tr("-", "_").
+    downcase
   end
 end

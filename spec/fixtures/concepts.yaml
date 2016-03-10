@@ -1,9 +1,9 @@
 ---
 - :annotations:
     :source: ITA
-    :altLabel: Defense Industry
-    :prefLabel: Aerospace and Defense
-  :subClassOf: []
+    :alt_label: Defense Industry
+    :pref_label: Aerospace and Defense
+  :sub_class_of: []
   :label: Aerospace and Defense
   :datatype_properties: {}
   :object_properties:
@@ -17,16 +17,15 @@
     - :id: http://webprotege.stanford.edu/R3anJjpDBXy092dEyJ0nXU
     :is_top_concept_in_scheme:
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
-  :leaf_node: false
   :subject: http://webprotege.stanford.edu/R8CoATsjiZSLAZF4Aaz6kK6
 - :annotations:
-    :altLabel: Aviation Industry
+    :alt_label: Aviation Industry
     :definition: The industry involved in the operation of commercial, non-military
       passenger and cargo transportation by air. The category features aviation transport
       businesses and organizations, as well as those providing supplies and services
       to this industry.
-    :prefLabel: Aviation
-  :subClassOf:
+    :pref_label: Aviation
+  :sub_class_of:
   - :id: http://webprotege.stanford.edu/R8CoATsjiZSLAZF4Aaz6kK6
     :label: Aerospace and Defense
   :label: Aviation
@@ -47,21 +46,20 @@
     :has_broader:
     - :id: http://webprotege.stanford.edu/R8CoATsjiZSLAZF4Aaz6kK6
       :label: Aerospace and Defense
-  :leaf_node: true
   :subject: http://webprotege.stanford.edu/RDBsKPGzqliWT5godmR5PDV
 - :annotations:
-    :prefLabel: Afghanistan
+    :pref_label: Afghanistan
     :source: ISO 3166
-  :subClassOf: []
+  :sub_class_of: []
   :label: Afghanistan
   :datatype_properties:
-    :countryCodeUNNumeric3:
+    :country_code_un_numeric3:
     - '4'
-    :countryNameISO3166Short:
+    :country_name_iso3166_short:
     - Afghanistan
-    :countryCodeISO3166Alpha3:
+    :country_code_iso3166_alpha3:
     - AFG
-    :countryCodeISO3166Alpha2:
+    :country_code_iso3166_alpha2:
     - AF
   :object_properties:
     :has_broader:
@@ -76,12 +74,11 @@
       :label: Countries
     :is_top_concept_in_scheme:
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
-  :leaf_node: true
   :subject: http://webprotege.stanford.edu/RDzjXT0GYF9ecQbq6oyxewD
 - :annotations:
-    :prefLabel: Asia
+    :pref_label: Asia
     :source: ITA
-  :subClassOf: []
+  :sub_class_of: []
   :label: Asia
   :datatype_properties: {}
   :object_properties:
@@ -100,12 +97,11 @@
     - :id: http://webprotege.stanford.edu/RDkKRunNIRFsKUYmLHwIMyM
     :is_top_concept_in_scheme:
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
-  :leaf_node: false
   :subject: http://webprotege.stanford.edu/R91fGuW6GPOnb7XSylIPwR5
 - :annotations:
-    :prefLabel: Central Asia
+    :pref_label: Central Asia
     :source: ITA
-  :subClassOf:
+  :sub_class_of:
   - :id: http://webprotege.stanford.edu/R91fGuW6GPOnb7XSylIPwR5
     :label: Asia
   :label: Central Asia
@@ -131,12 +127,11 @@
       :label: Asia
     :is_in_scheme:
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
-  :leaf_node: true
   :subject: http://webprotege.stanford.edu/R9pQ9NO7LyXj7vL7WbTAVVA
 - :annotations:
-    :prefLabel: International Cooperation
-    :altLabel: International Relations
-  :subClassOf: []
+    :pref_label: International Cooperation
+    :alt_label: International Relations
+  :sub_class_of: []
   :label: International Cooperation
   :datatype_properties: {}
   :object_properties:
@@ -165,15 +160,14 @@
       :label: Topics
     :is_top_concept_in_scheme:
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
-  :leaf_node: false
   :subject: http://webprotege.stanford.edu/RBUhToH9SFoFVriuHfHzcvT
 - :annotations:
     :source: UNCTAD/WTO
     :definition: An organization, the members of which are nations in the same geographical
       region of the world; or a group of countries undergoing economic integration
       according to international treaties.
-    :prefLabel: Regional Organizations
-  :subClassOf:
+    :pref_label: Regional Organizations
+  :sub_class_of:
   - :id: http://webprotege.stanford.edu/RBUhToH9SFoFVriuHfHzcvT
     :label: International Cooperation
   :label: Regional Organizations
@@ -199,13 +193,12 @@
     :has_broader:
     - :id: http://webprotege.stanford.edu/RBUhToH9SFoFVriuHfHzcvT
       :label: International Cooperation
-  :leaf_node: false
   :subject: http://webprotege.stanford.edu/RBb72pZnfGSZApKbgfMfARC
 - :annotations:
-    :prefLabel: Economic Cooperation Organization
+    :pref_label: Economic Cooperation Organization
     :source: UNCTAD/WTO
-    :altLabel: ECO
-  :subClassOf:
+    :alt_label: ECO
+  :sub_class_of:
   - :id: http://webprotege.stanford.edu/RBb72pZnfGSZApKbgfMfARC
     :label: Regional Organizations
   :label: Economic Cooperation Organization
@@ -234,13 +227,12 @@
     :has_broader:
     - :id: http://webprotege.stanford.edu/RBb72pZnfGSZApKbgfMfARC
       :label: Regional Organizations
-  :leaf_node: true
   :subject: http://webprotege.stanford.edu/RDrX1xLUDh7oA05RQ3JXshC
 - :annotations:
     :source: ISO 3166
-    :altLabel: US
-    :prefLabel: United States
-  :subClassOf: []
+    :alt_label: US
+    :pref_label: United States
+  :sub_class_of: []
   :label: United States
   :datatype_properties: {}
   :object_properties:
@@ -300,7 +292,7 @@
     - :id: http://webprotege.stanford.edu/R9zdMKg41CDoti1DI3VL551
     - :id: http://webprotege.stanford.edu/R7N6OGRePaWPoIlyokdwPtj
     - :id: http://webprotege.stanford.edu/RCVth8IJxKyunkoRlzGy164
-    :hasDependentTerritory:
+    :has_dependent_territory:
     - :id: http://webprotege.stanford.edu/RhBywiBwlnrwjX9mmegngf
     - :id: http://webprotege.stanford.edu/RLBzlQFAH3nKqqxEcHkJzx
     - :id: http://webprotege.stanford.edu/R7N6OGRePaWPoIlyokdwPtj
@@ -323,7 +315,7 @@
     - :id: http://webprotege.stanford.edu/RNZGitu3RBKIpasiwQxlpK
     - :id: http://webprotege.stanford.edu/RDNfMAr4j0BXC1dfLSMEWt4
     - :id: http://webprotege.stanford.edu/R8QeCXxFOyplkfg4SI30D6w
-    :hasAssociatedState:
+    :has_associated_state:
     - :id: http://webprotege.stanford.edu/R9rVGUHUgufNHYqigEuH1Y1
     - :id: http://webprotege.stanford.edu/R7aF0P8k19Yjgqx01edA2b5
     - :id: http://webprotege.stanford.edu/RUtBoSE3VZchBze1rQYCYF
@@ -337,5 +329,4 @@
     :member_of:
     - :id: http://webprotege.stanford.edu/R8W91u35GBegWcXXFflYE4
       :label: Countries
-  :leaf_node: true
   :subject: http://webprotege.stanford.edu/RC4HD9CwKjvgX8dSybAp3Sk

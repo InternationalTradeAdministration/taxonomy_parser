@@ -57,7 +57,6 @@ class TaxonomyParser
     properties = extract_properties(node)
  
     properties.merge({ 
-      leaf_node: subclass_nodes.empty?,
       subclass_nodes: subclass_nodes,
       subject: subject,
       #xml_source: node.to_s,
