@@ -37,12 +37,30 @@ my_parser.concept_groups
 Each of these methods will return an array of hashes that contain the following symbolized keys:
 
 * label
-* leaf_node
-* path
 * subject
-* concept_groups
-* broader_terms
-* narrower_terms
+* sub_class_of
+* annotations
+* datatype_properties
+* object_properties
+
+There are other possible fields as well, depending on the source data.  An example concept showing the structure:
+```ruby
+ {:label=>"Market Research Services",
+  :sub_class_of=>
+   [{:id=>"http://webprotege.stanford.edu/RZAYCEhJ1RvOk65kuqHWF7",
+     :label=>"Marketing Services"}],
+  :source=>"ITA",
+  :pref_label=>"Market Research Services",
+  :datatype_properties=>{},
+  :object_properties=>
+   {:has_broader=>
+     [{:id=>"http://webprotege.stanford.edu/RZAYCEhJ1RvOk65kuqHWF7",
+       :label=>"Marketing Services"}],
+    :member_of=>
+     [{:id=>"http://webprotege.stanford.edu/RCSUVZOLMw17ZnTq4SY2JcX",
+       :label=>"Product Class"}]},
+  :subject=>"http://webprotege.stanford.edu/RDV1ccixsBYCOyBPN4RYvkw"}
+```
 
 There are a few built in lookup methods:
 

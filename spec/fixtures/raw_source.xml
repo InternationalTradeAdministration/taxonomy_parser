@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0"?><root><?xml version="1.0"?>
 <rdf:RDF xmlns="http://purl.org/umu/uneskos#"
      xml:base="http://purl.org/umu/uneskos"
      xmlns:webprotege="http://webprotege.stanford.edu/"
@@ -2099,4 +2099,4 @@ One such application is illustrated by the EUROVOC and the UNESCO thesaurus.  Bo
         <skos:altLabel>US</skos:altLabel>
     </owl:Class>
 
-</rdf:RDF>
+</rdf:RDF></root>

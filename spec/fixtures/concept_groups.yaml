@@ -1,43 +1,63 @@
 ---
-- :label: Countries
-  :leaf_node: true
-  :path: "/Countries"
+- :annotations:
+    :comment: The International Standards Organization (ISO) maintains a list of country
+      codes since 1974. Other standards bodies have adopted the ISO 3166 code list.
+    :source: ISO 3166
+    :pref_label: Countries
+  :sub_class_of: []
+  :label: Countries
+  :datatype_properties: {}
+  :object_properties: {}
   :subject: http://webprotege.stanford.edu/R8W91u35GBegWcXXFflYE4
-  :concept_groups: []
-  :broader_terms: []
-  :narrower_terms: []
-- :label: Industries
-  :leaf_node: false
-  :path: "/Industries"
+- :annotations:
+    :source: ITA
+    :pref_label: Industries
+  :sub_class_of: []
+  :label: Industries
+  :datatype_properties: {}
+  :object_properties:
+    :micro_thesaurus_of:
+    - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
   :subject: http://webprotege.stanford.edu/R79uIjoQaQ9KzvJfyB1H7Ru
-  :concept_groups: []
-  :broader_terms: []
-  :narrower_terms: []
-- :label: Sector
-  :leaf_node: true
-  :path: "/Industries/Sector"
+- :annotations:
+    :pref_label: Sector
+    :alt_label: Industry Sector
+    :source: ITA
+  :sub_class_of:
+  - :id: http://webprotege.stanford.edu/R79uIjoQaQ9KzvJfyB1H7Ru
+    :label: Industries
+  :label: Sector
+  :datatype_properties: {}
+  :object_properties: {}
   :subject: http://webprotege.stanford.edu/RwdbpCsGlOI2iwaG4UqDl0
-  :concept_groups: []
-  :broader_terms: []
-  :narrower_terms: []
-- :label: Topics
-  :leaf_node: true
-  :path: "/Topics"
+- :annotations:
+    :source: UNCTAD/WTO
+    :pref_label: Topics
+  :sub_class_of: []
+  :label: Topics
+  :datatype_properties: {}
+  :object_properties:
+    :micro_thesaurus_of:
+    - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
   :subject: http://webprotege.stanford.edu/RBBed4Voz7iS3nUECA3yzNM
-  :concept_groups: []
-  :broader_terms: []
-  :narrower_terms: []
-- :label: Trade Regions
-  :leaf_node: false
-  :path: "/Trade Regions"
+- :annotations:
+    :alt_label: Economic Groupings
+    :pref_label: Trade Regions
+    :comment: Trade regions as defined by the International Trade Administration
+  :sub_class_of: []
+  :label: Trade Regions
+  :datatype_properties: {}
+  :object_properties:
+    :micro_thesaurus_of:
+    - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
   :subject: http://webprotege.stanford.edu/R7ySyiNxcfeZ6bfNjhocNun
-  :concept_groups: []
-  :broader_terms: []
-  :narrower_terms: []
-- :label: World Regions
-  :leaf_node: true
-  :path: "/World Regions"
+- :annotations:
+    :source: ITA
+    :pref_label: World Regions
+  :sub_class_of: []
+  :label: World Regions
+  :datatype_properties: {}
+  :object_properties:
+    :micro_thesaurus_of:
+    - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
   :subject: http://webprotege.stanford.edu/R8cndKa2D8NuNg7djwJcXxB
-  :concept_groups: []
-  :broader_terms: []
-  :narrower_terms: []
