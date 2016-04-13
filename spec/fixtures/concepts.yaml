@@ -17,6 +17,7 @@
     - :id: http://webprotege.stanford.edu/R3anJjpDBXy092dEyJ0nXU
     :is_top_concept_in_scheme:
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
+      :label: Thesaurus of International Trade and Investment Terms
   :subject: http://webprotege.stanford.edu/R8CoATsjiZSLAZF4Aaz6kK6
 - :annotations:
     :alt_label: Aviation Industry
@@ -33,6 +34,7 @@
   :object_properties:
     :is_in_scheme:
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
+      :label: Thesaurus of International Trade and Investment Terms
     :has_narrower:
     - :id: http://webprotege.stanford.edu/R635cvqm6BBP8Jzu7yW6oh
     - :id: http://webprotege.stanford.edu/R83KkvcNAEbR5GIN8ALouQW
@@ -74,6 +76,7 @@
       :label: Countries
     :is_top_concept_in_scheme:
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
+      :label: Thesaurus of International Trade and Investment Terms
   :subject: http://webprotege.stanford.edu/RDzjXT0GYF9ecQbq6oyxewD
 - :annotations:
     :pref_label: Asia
@@ -97,6 +100,7 @@
     - :id: http://webprotege.stanford.edu/RDkKRunNIRFsKUYmLHwIMyM
     :is_top_concept_in_scheme:
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
+      :label: Thesaurus of International Trade and Investment Terms
   :subject: http://webprotege.stanford.edu/R91fGuW6GPOnb7XSylIPwR5
 - :annotations:
     :pref_label: Central Asia
@@ -127,6 +131,7 @@
       :label: Asia
     :is_in_scheme:
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
+      :label: Thesaurus of International Trade and Investment Terms
   :subject: http://webprotege.stanford.edu/R9pQ9NO7LyXj7vL7WbTAVVA
 - :annotations:
     :pref_label: International Cooperation
@@ -160,6 +165,7 @@
       :label: Topics
     :is_top_concept_in_scheme:
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
+      :label: Thesaurus of International Trade and Investment Terms
   :subject: http://webprotege.stanford.edu/RBUhToH9SFoFVriuHfHzcvT
 - :annotations:
     :source: UNCTAD/WTO
@@ -224,6 +230,7 @@
       :label: Trade Regions
     :is_in_scheme:
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
+      :label: Thesaurus of International Trade and Investment Terms
     :has_broader:
     - :id: http://webprotege.stanford.edu/RBb72pZnfGSZApKbgfMfARC
       :label: Regional Organizations
@@ -326,6 +333,7 @@
     - :id: http://webprotege.stanford.edu/RKn0x8BGb8udkb77NaE1ch
     :is_top_concept_in_scheme:
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
+      :label: Thesaurus of International Trade and Investment Terms
     :member_of:
     - :id: http://webprotege.stanford.edu/R8W91u35GBegWcXXFflYE4
       :label: Countries

@@ -3,12 +3,14 @@ require 'yaml'
 
 describe TaxonomyParser do
   before(:all) do
-    data_dir = File.dirname(__FILE__) + "/fixtures/test_data.zip"
-    @parser = TaxonomyParser.new(data_dir)
+    @data_dir = File.dirname(__FILE__) + "/fixtures/test_data.zip"
+    @parser = TaxonomyParser.new(@data_dir)
     @parser.parse
 
     @expected_concepts = YAML.load_file(File.dirname(__FILE__) + "/fixtures/concepts.yaml")
     @expected_concept_groups = YAML.load_file(File.dirname(__FILE__) + "/fixtures/concept_groups.yaml")
+    @expected_concept_schemes = YAML.load_file(File.dirname(__FILE__) + "/fixtures/concept_schemes.yaml")
+    @expected_full_terms = @expected_concepts + @expected_concept_groups + @expected_concept_schemes
   end
 
   it 'has a version number' do
@@ -25,8 +27,23 @@ describe TaxonomyParser do
     expect(@parser.concepts).to match_array(@expected_concepts)
   end
 
+  it 'parses the correct concept schemes' do
+    expect(@parser.concept_schemes.size).to eq(@expected_concept_schemes.size)
+    expect(@parser.concept_schemes).to match_array(@expected_concept_schemes)
+  end
+
+  it 'returns the correct full terms from XML source' do
+    expect(@parser.terms.size).to eq(@expected_full_terms.size)
+    expect(@parser.terms).to match_array(@expected_full_terms)
+  end
+
+  it 'returns the correct full terms when pre-loaded with data' do
+    parser = TaxonomyParser.new(@data_dir, @expected_full_terms)
+    expect(@parser.terms.size).to eq(@expected_full_terms.size)
+    expect(@parser.terms).to match_array(@expected_full_terms)
+  end
+
   it 'returns the correct raw_source' do
-    File.open(File.dirname(__FILE__) + "/fixtures/raw_source.xml", 'w'){|f| f.write(@parser.raw_source)}
     expected_raw_source = File.open(File.dirname(__FILE__) + "/fixtures/raw_source.xml").read
     expect(@parser.raw_source).to eq(expected_raw_source)
   end
@@ -59,15 +76,15 @@ describe TaxonomyParser do
       end
     end
 
-    describe '#get_concept_by_label' do
-      it 'returns the correct concept for a given label' do
+    describe '#get_term_by_label' do
+      it 'returns the correct term for a given label' do
         expected_concept_for_label = @expected_concepts.find{|concept| concept[:label] == "Aviation" }
-        expect(@parser.get_concept_by_label("Aviation")).to eq expected_concept_for_label
+        expect(@parser.get_term_by_label("Aviation")).to eq expected_concept_for_label
       end
 
-      it 'returns the correct concept for a label that requires a mapping lookup' do
+      it 'returns the correct term for a label that requires a mapping lookup' do
         expected_concept_for_label = @expected_concepts.find{|concept| concept[:label] == "Aviation" }
-        expect(@parser.get_concept_by_label("Avi ation")).to eq expected_concept_for_label
+        expect(@parser.get_term_by_label("Avi ation")).to eq expected_concept_for_label
       end
     end
   end

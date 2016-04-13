@@ -13,13 +13,14 @@ class TaxonomyParser
   CONCEPT_IRI = 'http://www.w3.org/2004/02/skos/core#Concept'
   CONCEPT_SCHEME_IRI = 'http://www.w3.org/2004/02/skos/core#ConceptScheme'
 
-  attr_accessor :concept_groups, :concepts, :concept_schemes, :raw_source
+  attr_accessor :terms, :concept_groups, :concepts, :concept_schemes, :raw_source
 
-  def initialize(resource)
+  def initialize(resource, pre_loaded_terms = nil)
     @resource = resource
     @concepts = []
     @concept_groups = []
     @concept_schemes = []
+    @terms = pre_loaded_terms.nil? ? [] : pre_loaded_terms
     @raw_source = extract_xml_from_zip
     @xml = Nokogiri::XML(@raw_source)
     @xml.remove_namespaces!
@@ -29,6 +30,7 @@ class TaxonomyParser
     extract_terms(@concept_groups, CONCEPT_GROUP_IRI)
     extract_terms(@concepts, CONCEPT_IRI)
     extract_terms(@concept_schemes, CONCEPT_SCHEME_IRI)
+    @terms = @concepts + @concept_groups + @concept_schemes
     post_processing
   end
 
@@ -40,6 +42,7 @@ class TaxonomyParser
     process_subclass_nodes(root_node_hash) do |node_hash|
       terms.push node_hash
     end
+    terms.uniq!
   end
 
   def process_subclass_nodes(node_hash, &block)

@@ -3,8 +3,7 @@ module PostProcessing
   private
 
   def post_processing
-    combined = @concepts + @concept_groups + @concept_schemes
-    combined.each do |term|
+    terms.each do |term|
       assign_labels_to_parents(term)
       assign_labels_to_properties(term)
     end

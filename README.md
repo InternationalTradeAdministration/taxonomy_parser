@@ -20,18 +20,25 @@ Or install it yourself as:
 
 ## Usage
 
-Initialize a new parser and call the parse method to download and parse the terms.  A valid path or URL must be provided (to the ZIP file containing the .owl XML):
+Initialize a new parser and call the parse method to download and parse the terms.  
+A valid path or URL must be provided to a ZIP file containing the .owl XML in order to call the parse method.  
+The parser's terms can also be preloaded by passing in an array of terms as the second parameter.  
+These terms will be accessible by calling the `terms` method without needing to call `parse`.
 
 ```ruby
 my_parser = TaxonomyParser.new('path/or/url/to/zip')
 my_parser.parse
+my_parser = TaxonomyParser.new('path/or/url/to/zip', [ array_of_hash_terms ])
+my_parser.terms
 ```
 
-You can then view the concepts and concept groups by calling their respective methods:
+After calling parse, you can view the concepts, concept groups and concept schemes, in addition to the full list of terms, by calling their respective methods:
 
 ```ruby
 my_parser.concepts
 my_parser.concept_groups
+my_parser.concept_schemes
+my_parser.terms
 ```
 
 Each of these methods will return an array of hashes that contain the following symbolized keys:
@@ -76,7 +83,7 @@ my_parser.get_concepts_by_concept_group("Countries")
 Returns an array of terms that are a member of the given concept group.
 
 ```ruby
-my_parser.get_concept_by_label('Aviation')
+my_parser.get_term_by_label('Aviation')
 ```
 Returns a single hash term given it's name.
 
