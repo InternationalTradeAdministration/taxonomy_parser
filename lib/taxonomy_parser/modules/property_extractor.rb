@@ -20,7 +20,10 @@ module PropertyExtractor
   def extract_leaf_properties(node)
     leaf_nodes = node.xpath("./*[not(child::*)]")
     leaf_properties = {}
-    leaf_properties[:annotations] = leaf_nodes.map{|node| { generate_key(node.name) => node.text} }.reduce Hash.new, :merge
+    leaf_properties[:annotations] = leaf_nodes.map do |node| 
+      { generate_key(node.name) => node.text} 
+    end.reduce Hash.new, :merge
+
     leaf_properties[:sub_class_of] = extract_parent_ids(leaf_nodes)
     leaf_properties[:label] = leaf_properties[:annotations][:label]
     leaf_properties[:annotations].delete(:label)

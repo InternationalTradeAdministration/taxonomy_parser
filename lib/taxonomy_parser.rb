@@ -21,6 +21,7 @@ class TaxonomyParser
     @concept_groups = []
     @concept_schemes = []
     @terms = pre_loaded_terms.nil? ? [] : pre_loaded_terms
+    
     @raw_source = extract_xml_from_zip
     @xml = Nokogiri::XML(@raw_source)
     @xml.remove_namespaces!
@@ -92,6 +93,6 @@ class TaxonomyParser
 
     file.unlink
     content << '</root>'
-    content
+    content.gsub('&apos;', "'")
   end
 end

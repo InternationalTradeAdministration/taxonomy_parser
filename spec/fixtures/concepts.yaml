@@ -1,5 +1,26 @@
 ---
 - :annotations:
+    :alt_label: Cote d'Ivoire
+    :source: ISO 3166
+    :pref_label: Côte d'Ivoire
+  :sub_class_of: []
+  :label: Côte d'Ivoire
+  :datatype_properties: {}
+  :object_properties:
+    :has_broader:
+    - :id: http://webprotege.stanford.edu/R8DdIMDFzHvwLDKQu30RRmN
+    - :id: http://webprotege.stanford.edu/R7q9jrGbpXPRPccAu33iNNU
+    :has_related:
+    - :id: http://webprotege.stanford.edu/RBYST5TkMsG3aOT9QMbCYFF
+    - :id: http://webprotege.stanford.edu/RFLXc4pqxjgrJXHW7QlWRS
+    :member_of:
+    - :id: http://webprotege.stanford.edu/R8W91u35GBegWcXXFflYE4
+      :label: Countries
+    :is_top_concept_in_scheme:
+    - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
+      :label: Thesaurus of International Trade and Investment Terms
+  :subject: http://webprotege.stanford.edu/R72Vq8tvj233V96ZX6FnbkI
+- :annotations:
     :source: ITA
     :alt_label: Defense Industry
     :pref_label: Aerospace and Defense

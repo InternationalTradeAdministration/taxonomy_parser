@@ -44,7 +44,7 @@ describe TaxonomyParser do
   end
 
   it 'returns the correct raw_source' do
-    expected_raw_source = File.open(File.dirname(__FILE__) + "/fixtures/raw_source.xml").read
+    expected_raw_source = File.open(File.dirname(__FILE__) + "/fixtures/raw_source.xml", :encoding => 'ascii-8bit').read
     expect(@parser.raw_source).to eq(expected_raw_source)
   end
 
