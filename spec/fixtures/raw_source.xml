@@ -1,4 +1,8 @@
-<?xml version="1.0"?><root><?xml version="1.0"?>
+<?xml version="1.0"?><root>
+
+<test-root>
+
+</test-root>
 <rdf:RDF xmlns="http://purl.org/umu/uneskos#"
      xml:base="http://purl.org/umu/uneskos"
      xmlns:webprotege="http://webprotege.stanford.edu/"

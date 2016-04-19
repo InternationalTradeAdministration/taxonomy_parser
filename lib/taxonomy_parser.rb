@@ -21,7 +21,7 @@ class TaxonomyParser
     @concept_groups = []
     @concept_schemes = []
     @terms = pre_loaded_terms.nil? ? [] : pre_loaded_terms
-    
+
     @raw_source = extract_xml_from_zip
     @xml = Nokogiri::XML(@raw_source)
     @xml.remove_namespaces!
@@ -87,7 +87,8 @@ class TaxonomyParser
     content = '<?xml version="1.0"?><root>'
     Zip::File.open(file.path) do |zip_file|
       zip_file.each do |entry|
-        content << entry.get_input_stream.read if entry.name.end_with?('.owl')
+        new_content = entry.get_input_stream.read if entry.name.end_with?('.owl')
+        content << new_content.gsub('<?xml version="1.0"?>', '') if new_content
       end
     end
 
