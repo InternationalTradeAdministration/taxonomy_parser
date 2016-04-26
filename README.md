@@ -21,12 +21,14 @@ Or install it yourself as:
 ## Usage
 
 Initialize a new parser and call the parse method to download and parse the terms.  
-A valid path or URL must be provided to a ZIP file containing the .owl XML in order to call the parse method.  
+In order to initialize the parser correctly, you must provide a valid path or URL to a ZIP file containing the OWL files, 
+or you can pass in an array of OWL file names (such as ["path/file1.owl", "path/file2.owl", etc.]).
 The parser's terms can also be preloaded by passing in an array of terms as the second parameter.  
 These terms will be accessible by calling the `terms` method without needing to call `parse`.
 
 ```ruby
 my_parser = TaxonomyParser.new('path/or/url/to/zip')
+my_parser = TaxonomyParser.new(["path/file1.owl", "path/file2.owl"])
 my_parser.parse
 my_parser = TaxonomyParser.new('path/or/url/to/zip', [ array_of_hash_terms ])
 my_parser.terms
@@ -50,23 +52,22 @@ Each of these methods will return an array of hashes that contain the following 
 * datatype_properties
 * object_properties
 
-There are other possible fields as well, depending on the source data.  An example concept showing the structure:
+An example concept showing the structure:
 ```ruby
- {:label=>"Market Research Services",
-  :sub_class_of=>
-   [{:id=>"http://webprotege.stanford.edu/RZAYCEhJ1RvOk65kuqHWF7",
-     :label=>"Marketing Services"}],
-  :source=>"ITA",
-  :pref_label=>"Market Research Services",
-  :datatype_properties=>{},
-  :object_properties=>
-   {:has_broader=>
-     [{:id=>"http://webprotege.stanford.edu/RZAYCEhJ1RvOk65kuqHWF7",
-       :label=>"Marketing Services"}],
-    :member_of=>
-     [{:id=>"http://webprotege.stanford.edu/RCSUVZOLMw17ZnTq4SY2JcX",
-       :label=>"Product Class"}]},
-  :subject=>"http://webprotege.stanford.edu/RDV1ccixsBYCOyBPN4RYvkw"}
+{:annotations=>{:source=>"ITA", :pref_label=>"Market Research Services"},
+ :sub_class_of=>
+  [{:id=>"http://webprotege.stanford.edu/RZAYCEhJ1RvOk65kuqHWF7",
+    :label=>"Marketing Services"}],
+ :label=>"Market Research Services",
+ :datatype_properties=>{},
+ :object_properties=>
+  {:member_of=>
+    [{:id=>"http://webprotege.stanford.edu/RCSUVZOLMw17ZnTq4SY2JcX",
+      :label=>"Product Class"}],
+   :has_broader=>
+    [{:id=>"http://webprotege.stanford.edu/RZAYCEhJ1RvOk65kuqHWF7",
+      :label=>"Marketing Services"}]},
+ :subject=>"http://webprotege.stanford.edu/RDV1ccixsBYCOyBPN4RYvkw"}
 ```
 
 There are a few built in lookup methods:
@@ -90,7 +91,7 @@ Returns a single hash term given it's name.
 ```ruby
 my_parser.raw_source
 ```
-Returns a string containing the raw XML source from Webprotege.
+Returns a string containing a combined version of the raw XML that was provided to the parser's constructor.
 
 ## Development
 

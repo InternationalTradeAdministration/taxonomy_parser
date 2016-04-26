@@ -1,0 +1,36 @@
+---
+- :annotations:
+    :pref_label: Afghanistan
+    :source: ISO 3166
+  :sub_class_of:
+  - :id: http://www.w3.org/2004/02/skos/core#Concept
+  :label: Afghanistan
+  :datatype_properties:
+    :country_code_un_numeric3:
+    - '4'
+    :country_name_iso3166_short:
+    - Afghanistan
+    :country_code_iso3166_alpha3:
+    - AFG
+    :country_code_iso3166_alpha2:
+    - AF
+  :object_properties:
+    :has_broader:
+    - :id: http://webprotege.stanford.edu/RDrX1xLUDh7oA05RQ3JXshC
+    - :id: http://webprotege.stanford.edu/R9pQ9NO7LyXj7vL7WbTAVVA
+    - :id: http://webprotege.stanford.edu/RGHFvv0EAkgVEEklFu0O23
+    - :id: http://webprotege.stanford.edu/RDkKRunNIRFsKUYmLHwIMyM
+    :member_of:
+    - :id: http://webprotege.stanford.edu/R8W91u35GBegWcXXFflYE4
+    :is_top_concept_in_scheme:
+    - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
+- :annotations:
+    :comment: The International Standards Organization (ISO) maintains a list of country
+      codes since 1974. Other standards bodies have adopted the ISO 3166 code list.
+    :source: ISO 3166
+    :pref_label: Countries
+  :sub_class_of:
+  - :id: http://purl.org/iso25964/skos-thes#ConceptGroup
+  :label: Countries
+  :datatype_properties: {}
+  :object_properties: {}

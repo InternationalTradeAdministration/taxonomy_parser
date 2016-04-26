@@ -1,8 +1,8 @@
 module PropertyExtractor
 
-  private
+  def self.extract_properties(node, xml)
+    @xml = xml
 
-  def extract_properties(node)
     datatype_properties = {}
     object_properties = {}
     all_fields = extract_leaf_properties(node)
@@ -13,15 +13,18 @@ module PropertyExtractor
       process_property_node(property_node, datatype_properties, object_properties)
     end
 
-    combined_properties = {datatype_properties: datatype_properties, object_properties: object_properties}
+    combined_properties = { datatype_properties: datatype_properties, object_properties: object_properties }
     all_fields.merge(combined_properties)
   end
 
-  def extract_leaf_properties(node)
+  private
+
+  def self.extract_leaf_properties(node)
     leaf_nodes = node.xpath("./*[not(child::*)]")
     leaf_properties = {}
     leaf_properties[:annotations] = leaf_nodes.map do |node| 
-      { generate_key(node.name) => node.text} 
+      node.name = 'forceAltLabel' if node.name == 'R8MlVGLpr4BX9VHBDTs4xyN' # Hardcode this for now, can generalize later if more cases arise
+      { generate_key(node.name) => node.text } 
     end.reduce Hash.new, :merge
 
     leaf_properties[:sub_class_of] = extract_parent_ids(leaf_nodes)
@@ -31,14 +34,14 @@ module PropertyExtractor
     leaf_properties
   end
 
-  def extract_parent_ids(leaf_nodes)
-    parent_nodes = leaf_nodes.select{|node| node.name == 'subClassOf'}
+  def self.extract_parent_ids(leaf_nodes)
+    parent_nodes = leaf_nodes.select{ |node| node.name == 'subClassOf' }
     parent_nodes.map do |node|
-      {id: node.attr('resource')}
+      { id: node.attr('resource') }
     end
   end
 
-  def process_property_node(property_node, datatype_properties, object_properties)
+  def self.process_property_node(property_node, datatype_properties, object_properties)
     property_iri = property_node.xpath('./onProperty').first.attr('resource')
 
     object_source_node = @xml.xpath("//ObjectProperty[@about='#{property_iri}']").first
@@ -53,25 +56,29 @@ module PropertyExtractor
     end
   end
 
-  def extract_datatype_property(property_node, datatype_source_node, datatype_properties)
+  def self.extract_datatype_property(property_node, datatype_source_node, datatype_properties)
     target_value = property_node.xpath('./hasValue').text
     property_key = generate_key(extract_label(datatype_source_node))
     add_property(datatype_properties, property_key, target_value)
   end
 
-  def extract_object_property(property_node, object_source_node, object_properties)
+  def self.extract_object_property(property_node, object_source_node, object_properties)
     target_id = property_node.xpath('./someValuesFrom').first.attr('resource') rescue property_node.xpath('./hasValue').first.attr('resource')
     property_key = generate_key(extract_label(object_source_node))
     add_property(object_properties, property_key, {id: target_id})
   end
 
-  def add_property(hash, key, value)
+  def self.add_property(hash, key, value)
     hash[key] = [] unless hash.has_key?(key)
     hash[key] << value
   end
 
-  def generate_key(string)
+  def self.generate_key(string)
     string.gsub(' ', '_').underscore.to_sym
+  end
+
+  def self.extract_label(node)
+    node.xpath('./label').text
   end
 end
 
