@@ -7,8 +7,7 @@ Dir[File.dirname(__FILE__) + "/taxonomy_parser/modules/*.rb"].each {|file| requi
 
 class TaxonomyParser
   include LookupMethods
-  include PropertyExtractor
-  include PostProcessing
+
   CONCEPT_GROUP_IRI = 'http://purl.org/iso25964/skos-thes#ConceptGroup'
   CONCEPT_IRI = 'http://www.w3.org/2004/02/skos/core#Concept'
   CONCEPT_SCHEME_IRI = 'http://www.w3.org/2004/02/skos/core#ConceptScheme'
@@ -22,8 +21,10 @@ class TaxonomyParser
     @concept_schemes = []
     @terms = pre_loaded_terms.nil? ? [] : pre_loaded_terms
 
-    @raw_source = extract_xml_from_zip
-    @xml = Nokogiri::XML(@raw_source)
+    @raw_source = extract_xml_from_zip unless @resource.is_a?(Array)
+    @raw_source = combine_xml_files(@resource.map{ |f| open(f).read }) if @resource.is_a?(Array)
+
+    @xml = Nokogiri::XML(@raw_source){ |config| config.strict }
     @xml.remove_namespaces!
   end
 
@@ -32,7 +33,7 @@ class TaxonomyParser
     extract_terms(@concepts, CONCEPT_IRI)
     extract_terms(@concept_schemes, CONCEPT_SCHEME_IRI)
     @terms = @concepts + @concept_groups + @concept_schemes
-    post_processing
+    PostProcessor.process_terms(self)
   end
 
   private
@@ -58,17 +59,13 @@ class TaxonomyParser
   def extract_node_hash(node)
     subject = extract_subject(node)
     subclass_nodes = extract_subclass_nodes(subject)
-    properties = extract_properties(node)
+    properties = PropertyExtractor.extract_properties(node, @xml)
  
     properties.merge({ 
       subclass_nodes: subclass_nodes,
       subject: subject,
       #xml_source: node.to_s,
     })
-  end
-
-  def extract_label(node)
-    node.xpath('./label').text
   end
 
   def extract_subject(node)
@@ -84,16 +81,23 @@ class TaxonomyParser
     file.write(open(@resource).read)
     file.close
 
-    content = '<?xml version="1.0"?><root>'
+    contents = []
     Zip::File.open(file.path) do |zip_file|
       zip_file.each do |entry|
-        new_content = entry.get_input_stream.read if entry.name.end_with?('.owl')
-        content << new_content.gsub('<?xml version="1.0"?>', '') if new_content
+        contents << entry.get_input_stream.read if entry.name.end_with?('.owl')
       end
     end
 
     file.unlink
+    combine_xml_files(contents)
+  end
+
+  def combine_xml_files(file_contents)
+    content = '<?xml version="1.0"?><root>'
+    file_contents.each do |new_content|
+      content << new_content.gsub('<?xml version="1.0"?>', '')
+    end
     content << '</root>'
-    content.gsub('&apos;', "'")
+    content
   end
 end

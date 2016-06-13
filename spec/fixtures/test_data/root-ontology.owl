@@ -799,6 +799,29 @@
      -->
 
 
+    <!-- http://webprotege.stanford.edu/RRjGyMcXyBe3Hiicy69yOl -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RRjGyMcXyBe3Hiicy69yOl">
+        <rdfs:label>Georgia (USA)</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RC4HD9CwKjvgX8dSybAp3Sk"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2004/02/skos/core#inScheme"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2004/02/skos/core#broader"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/RC4HD9CwKjvgX8dSybAp3Sk"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:source>ISO 3166</dc:source>
+        <skos:prefLabel>Georgia (USA)</skos:prefLabel>
+        <webprotege:R8MlVGLpr4BX9VHBDTs4xyN>Georgia-USA</webprotege:R8MlVGLpr4BX9VHBDTs4xyN>
+    </owl:Class>
+
+
      <!-- http://webprotege.stanford.edu/R72Vq8tvj233V96ZX6FnbkI -->
 
     <owl:Class rdf:about="http://webprotege.stanford.edu/R72Vq8tvj233V96ZX6FnbkI">

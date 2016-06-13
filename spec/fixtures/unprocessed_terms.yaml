@@ -3,7 +3,8 @@
     :alt_label: Cote d'Ivoire
     :source: ISO 3166
     :pref_label: Côte d'Ivoire
-  :sub_class_of: []
+  :sub_class_of:
+  - :id: http://www.w3.org/2004/02/skos/core#Concept
   :label: Côte d'Ivoire
   :datatype_properties: {}
   :object_properties:
@@ -15,30 +16,26 @@
     - :id: http://webprotege.stanford.edu/RFLXc4pqxjgrJXHW7QlWRS
     :member_of:
     - :id: http://webprotege.stanford.edu/R8W91u35GBegWcXXFflYE4
-      :label: Countries
     :is_top_concept_in_scheme:
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
-      :label: Thesaurus of International Trade and Investment Terms
   :subject: http://webprotege.stanford.edu/R72Vq8tvj233V96ZX6FnbkI
 - :annotations:
     :source: ITA
     :alt_label: Defense Industry
     :pref_label: Aerospace and Defense
-  :sub_class_of: []
+  :sub_class_of:
+  - :id: http://www.w3.org/2004/02/skos/core#Concept
   :label: Aerospace and Defense
   :datatype_properties: {}
   :object_properties:
     :member_of:
     - :id: http://webprotege.stanford.edu/R79uIjoQaQ9KzvJfyB1H7Ru
-      :label: Industries
     :has_narrower:
     - :id: http://webprotege.stanford.edu/R9lHhOo010EPhoajnKC2Lvg
     - :id: http://webprotege.stanford.edu/RDBsKPGzqliWT5godmR5PDV
-      :label: Aviation
     - :id: http://webprotege.stanford.edu/R3anJjpDBXy092dEyJ0nXU
     :is_top_concept_in_scheme:
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
-      :label: Thesaurus of International Trade and Investment Terms
   :subject: http://webprotege.stanford.edu/R8CoATsjiZSLAZF4Aaz6kK6
 - :annotations:
     :alt_label: Aviation Industry
@@ -49,13 +46,11 @@
     :pref_label: Aviation
   :sub_class_of:
   - :id: http://webprotege.stanford.edu/R8CoATsjiZSLAZF4Aaz6kK6
-    :label: Aerospace and Defense
   :label: Aviation
   :datatype_properties: {}
   :object_properties:
     :is_in_scheme:
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
-      :label: Thesaurus of International Trade and Investment Terms
     :has_narrower:
     - :id: http://webprotege.stanford.edu/R635cvqm6BBP8Jzu7yW6oh
     - :id: http://webprotege.stanford.edu/R83KkvcNAEbR5GIN8ALouQW
@@ -65,15 +60,14 @@
     - :id: http://webprotege.stanford.edu/RvXfDHB5h5CSXPVpkb2gUJ
     :member_of:
     - :id: http://webprotege.stanford.edu/RwdbpCsGlOI2iwaG4UqDl0
-      :label: Sector
     :has_broader:
     - :id: http://webprotege.stanford.edu/R8CoATsjiZSLAZF4Aaz6kK6
-      :label: Aerospace and Defense
   :subject: http://webprotege.stanford.edu/RDBsKPGzqliWT5godmR5PDV
 - :annotations:
     :pref_label: Afghanistan
     :source: ISO 3166
-  :sub_class_of: []
+  :sub_class_of:
+  - :id: http://www.w3.org/2004/02/skos/core#Concept
   :label: Afghanistan
   :datatype_properties:
     :country_code_un_numeric3:
@@ -87,22 +81,19 @@
   :object_properties:
     :has_broader:
     - :id: http://webprotege.stanford.edu/RDrX1xLUDh7oA05RQ3JXshC
-      :label: Economic Cooperation Organization
     - :id: http://webprotege.stanford.edu/R9pQ9NO7LyXj7vL7WbTAVVA
-      :label: Central Asia
     - :id: http://webprotege.stanford.edu/RGHFvv0EAkgVEEklFu0O23
     - :id: http://webprotege.stanford.edu/RDkKRunNIRFsKUYmLHwIMyM
     :member_of:
     - :id: http://webprotege.stanford.edu/R8W91u35GBegWcXXFflYE4
-      :label: Countries
     :is_top_concept_in_scheme:
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
-      :label: Thesaurus of International Trade and Investment Terms
   :subject: http://webprotege.stanford.edu/RDzjXT0GYF9ecQbq6oyxewD
 - :annotations:
     :pref_label: Asia
     :source: ITA
-  :sub_class_of: []
+  :sub_class_of:
+  - :id: http://www.w3.org/2004/02/skos/core#Concept
   :label: Asia
   :datatype_properties: {}
   :object_properties:
@@ -112,58 +103,49 @@
     - :id: http://webprotege.stanford.edu/RXTomSBCCC8TOjYuMKCB8p
     :member_of:
     - :id: http://webprotege.stanford.edu/R8cndKa2D8NuNg7djwJcXxB
-      :label: World Regions
     :has_narrower:
     - :id: http://webprotege.stanford.edu/RCS37S95UoFr6hEWf8oRfQs
     - :id: http://webprotege.stanford.edu/RDAklO0LFVtjIoIUYj4Dg4M
     - :id: http://webprotege.stanford.edu/R9pQ9NO7LyXj7vL7WbTAVVA
-      :label: Central Asia
     - :id: http://webprotege.stanford.edu/RDkKRunNIRFsKUYmLHwIMyM
     :is_top_concept_in_scheme:
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
-      :label: Thesaurus of International Trade and Investment Terms
   :subject: http://webprotege.stanford.edu/R91fGuW6GPOnb7XSylIPwR5
 - :annotations:
     :pref_label: Central Asia
     :source: ITA
   :sub_class_of:
   - :id: http://webprotege.stanford.edu/R91fGuW6GPOnb7XSylIPwR5
-    :label: Asia
   :label: Central Asia
   :datatype_properties: {}
   :object_properties:
     :has_related:
     - :id: http://webprotege.stanford.edu/RDrX1xLUDh7oA05RQ3JXshC
-      :label: Economic Cooperation Organization
     - :id: http://webprotege.stanford.edu/RBVtSvNA1oiRIdyxG4yQW2U
     :has_narrower:
     - :id: http://webprotege.stanford.edu/RBw8ndgL3iXtxxTP560v6yZ
     - :id: http://webprotege.stanford.edu/RDzjXT0GYF9ecQbq6oyxewD
-      :label: Afghanistan
     - :id: http://webprotege.stanford.edu/RCYYmdELCU9mt8R3RdlNys5
     - :id: http://webprotege.stanford.edu/RCfB9gXWAQMhJ9dvN4Fk23V
     - :id: http://webprotege.stanford.edu/RDWMuIZgkJ15oLm2YFfp3cD
     - :id: http://webprotege.stanford.edu/RCJNAo9QHRdLFOVe3bV0HyH
     :member_of:
     - :id: http://webprotege.stanford.edu/R8cndKa2D8NuNg7djwJcXxB
-      :label: World Regions
     :has_broader:
     - :id: http://webprotege.stanford.edu/R91fGuW6GPOnb7XSylIPwR5
-      :label: Asia
     :is_in_scheme:
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
-      :label: Thesaurus of International Trade and Investment Terms
   :subject: http://webprotege.stanford.edu/R9pQ9NO7LyXj7vL7WbTAVVA
 - :annotations:
     :pref_label: International Cooperation
     :alt_label: International Relations
-  :sub_class_of: []
+  :sub_class_of:
+  - :id: http://www.w3.org/2004/02/skos/core#Concept
   :label: International Cooperation
   :datatype_properties: {}
   :object_properties:
     :has_narrower:
     - :id: http://webprotege.stanford.edu/RBb72pZnfGSZApKbgfMfARC
-      :label: Regional Organizations
     - :id: http://webprotege.stanford.edu/Rk5pCWf2G0cRCXVFbX6Mpe
     - :id: http://webprotege.stanford.edu/RDqvYT0w0McaR3ztDo7GTiN
     - :id: http://webprotege.stanford.edu/R9qZhnMIZ6hKNPtnEtcfbom
@@ -183,10 +165,8 @@
     - :id: http://webprotege.stanford.edu/RDHA9zT6LXQYJveXoKXYU68
     :member_of:
     - :id: http://webprotege.stanford.edu/RBBed4Voz7iS3nUECA3yzNM
-      :label: Topics
     :is_top_concept_in_scheme:
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
-      :label: Thesaurus of International Trade and Investment Terms
   :subject: http://webprotege.stanford.edu/RBUhToH9SFoFVriuHfHzcvT
 - :annotations:
     :source: UNCTAD/WTO
@@ -196,14 +176,12 @@
     :pref_label: Regional Organizations
   :sub_class_of:
   - :id: http://webprotege.stanford.edu/RBUhToH9SFoFVriuHfHzcvT
-    :label: International Cooperation
   :label: Regional Organizations
   :datatype_properties: {}
   :object_properties:
     :has_narrower:
     - :id: http://webprotege.stanford.edu/RGHFvv0EAkgVEEklFu0O23
     - :id: http://webprotege.stanford.edu/RDrX1xLUDh7oA05RQ3JXshC
-      :label: Economic Cooperation Organization
     - :id: http://webprotege.stanford.edu/R7YQAlNP4iXuBJLBhgPAcIO
     - :id: http://webprotege.stanford.edu/RBVtSvNA1oiRIdyxG4yQW2U
     - :id: http://webprotege.stanford.edu/RDzPvl6rgNC4szHLAsCM13
@@ -219,7 +197,6 @@
     - :id: http://webprotege.stanford.edu/R8mOUThypdlmCFXV56BVvD5
     :has_broader:
     - :id: http://webprotege.stanford.edu/RBUhToH9SFoFVriuHfHzcvT
-      :label: International Cooperation
   :subject: http://webprotege.stanford.edu/RBb72pZnfGSZApKbgfMfARC
 - :annotations:
     :pref_label: Economic Cooperation Organization
@@ -227,17 +204,14 @@
     :alt_label: ECO
   :sub_class_of:
   - :id: http://webprotege.stanford.edu/RBb72pZnfGSZApKbgfMfARC
-    :label: Regional Organizations
   :label: Economic Cooperation Organization
   :datatype_properties: {}
   :object_properties:
     :has_related:
     - :id: http://webprotege.stanford.edu/R9pQ9NO7LyXj7vL7WbTAVVA
-      :label: Central Asia
     :has_narrower:
     - :id: http://webprotege.stanford.edu/RCfB9gXWAQMhJ9dvN4Fk23V
     - :id: http://webprotege.stanford.edu/RDzjXT0GYF9ecQbq6oyxewD
-      :label: Afghanistan
     - :id: http://webprotege.stanford.edu/RDf5WqjTEy5LQfo27FVNARN
     - :id: http://webprotege.stanford.edu/R8Ej741whxQgjGSm96YKKbA
     - :id: http://webprotege.stanford.edu/RCYYmdELCU9mt8R3RdlNys5
@@ -248,19 +222,17 @@
     - :id: http://webprotege.stanford.edu/RDWMuIZgkJ15oLm2YFfp3cD
     :member_of:
     - :id: http://webprotege.stanford.edu/R7ySyiNxcfeZ6bfNjhocNun
-      :label: Trade Regions
     :is_in_scheme:
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
-      :label: Thesaurus of International Trade and Investment Terms
     :has_broader:
     - :id: http://webprotege.stanford.edu/RBb72pZnfGSZApKbgfMfARC
-      :label: Regional Organizations
   :subject: http://webprotege.stanford.edu/RDrX1xLUDh7oA05RQ3JXshC
 - :annotations:
     :source: ISO 3166
     :alt_label: US
     :pref_label: United States
-  :sub_class_of: []
+  :sub_class_of:
+  - :id: http://www.w3.org/2004/02/skos/core#Concept
   :label: United States
   :datatype_properties: {}
   :object_properties:
@@ -282,7 +254,6 @@
     - :id: http://webprotege.stanford.edu/RBfw0JZMcu38HcZLa0cYU8H
     - :id: http://webprotege.stanford.edu/RBw4hWqHHmpxWJAs3KDuNqV
     - :id: http://webprotege.stanford.edu/RRjGyMcXyBe3Hiicy69yOl
-      :label: Georgia (USA)
     - :id: http://webprotege.stanford.edu/R7XRDfRj4Aa6KQZgiOjQJkg
     - :id: http://webprotege.stanford.edu/R9V8iurJelp6Z6LDVtAmrge
     - :id: http://webprotege.stanford.edu/RrS3lqUJNn7CRXhk0qP5y9
@@ -355,10 +326,8 @@
     - :id: http://webprotege.stanford.edu/RKn0x8BGb8udkb77NaE1ch
     :is_top_concept_in_scheme:
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
-      :label: Thesaurus of International Trade and Investment Terms
     :member_of:
     - :id: http://webprotege.stanford.edu/R8W91u35GBegWcXXFflYE4
-      :label: Countries
   :subject: http://webprotege.stanford.edu/RC4HD9CwKjvgX8dSybAp3Sk
 - :annotations:
     :source: ISO 3166
@@ -366,14 +335,94 @@
     :force_alt_label: Georgia-USA
   :sub_class_of:
   - :id: http://webprotege.stanford.edu/RC4HD9CwKjvgX8dSybAp3Sk
-    :label: United States
   :label: Georgia (USA)
   :datatype_properties: {}
   :object_properties:
     :is_in_scheme:
     - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
-      :label: Thesaurus of International Trade and Investment Terms
     :has_broader:
     - :id: http://webprotege.stanford.edu/RC4HD9CwKjvgX8dSybAp3Sk
-      :label: United States
   :subject: http://webprotege.stanford.edu/RRjGyMcXyBe3Hiicy69yOl
+- :annotations:
+    :comment: The International Standards Organization (ISO) maintains a list of country
+      codes since 1974. Other standards bodies have adopted the ISO 3166 code list.
+    :source: ISO 3166
+    :pref_label: Countries
+  :sub_class_of:
+  - :id: http://purl.org/iso25964/skos-thes#ConceptGroup
+  :label: Countries
+  :datatype_properties: {}
+  :object_properties: {}
+  :subject: http://webprotege.stanford.edu/R8W91u35GBegWcXXFflYE4
+- :annotations:
+    :source: ITA
+    :pref_label: Industries
+  :sub_class_of:
+  - :id: http://purl.org/iso25964/skos-thes#ConceptGroup
+  :label: Industries
+  :datatype_properties: {}
+  :object_properties:
+    :micro_thesaurus_of:
+    - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
+  :subject: http://webprotege.stanford.edu/R79uIjoQaQ9KzvJfyB1H7Ru
+- :annotations:
+    :pref_label: Sector
+    :alt_label: Industry Sector
+    :source: ITA
+  :sub_class_of:
+  - :id: http://webprotege.stanford.edu/R79uIjoQaQ9KzvJfyB1H7Ru
+  :label: Sector
+  :datatype_properties: {}
+  :object_properties: {}
+  :subject: http://webprotege.stanford.edu/RwdbpCsGlOI2iwaG4UqDl0
+- :annotations:
+    :source: UNCTAD/WTO
+    :pref_label: Topics
+  :sub_class_of:
+  - :id: http://purl.org/iso25964/skos-thes#ConceptGroup
+  :label: Topics
+  :datatype_properties: {}
+  :object_properties:
+    :micro_thesaurus_of:
+    - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
+  :subject: http://webprotege.stanford.edu/RBBed4Voz7iS3nUECA3yzNM
+- :annotations:
+    :alt_label: Economic Groupings
+    :pref_label: Trade Regions
+    :comment: Trade regions as defined by the International Trade Administration
+  :sub_class_of:
+  - :id: http://purl.org/iso25964/skos-thes#ConceptGroup
+  - :id: http://webprotege.stanford.edu/R7ySyiNxcfeZ6bfNjhocNun
+  :label: Trade Regions
+  :datatype_properties: {}
+  :object_properties:
+    :micro_thesaurus_of:
+    - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
+  :subject: http://webprotege.stanford.edu/R7ySyiNxcfeZ6bfNjhocNun
+- :annotations:
+    :source: ITA
+    :pref_label: World Regions
+  :sub_class_of:
+  - :id: http://purl.org/iso25964/skos-thes#ConceptGroup
+  :label: World Regions
+  :datatype_properties: {}
+  :object_properties:
+    :micro_thesaurus_of:
+    - :id: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy
+  :subject: http://webprotege.stanford.edu/R8cndKa2D8NuNg7djwJcXxB
+- :annotations:
+    :creator: International Trade Administration
+    :pref_label: Thesaurus of International Trade and Investment Terms
+  :sub_class_of:
+  - :id: http://www.w3.org/2004/02/skos/core#ConceptScheme
+  :label: Thesaurus of International Trade and Investment Terms
+  :datatype_properties: {}
+  :object_properties:
+    :has_microthesaurus:
+    - :id: http://webprotege.stanford.edu/RBBed4Voz7iS3nUECA3yzNM
+    - :id: http://webprotege.stanford.edu/RBqqOvJ9rXMcmc5SDhGjWTp
+    - :id: http://webprotege.stanford.edu/R7ySyiNxcfeZ6bfNjhocNun
+    - :id: http://webprotege.stanford.edu/R79uIjoQaQ9KzvJfyB1H7Ru
+    - :id: http://webprotege.stanford.edu/R8cndKa2D8NuNg7djwJcXxB
+    - :id: http://webprotege.stanford.edu/R8W91u35GBegWcXXFflYE4
+  :subject: http://webprotege.stanford.edu/RC7BwiZbq5uJvqujC7p9NAy

@@ -3,6 +3,8 @@ require 'yaml'
 
 module LookupMethods
 
+  HIGH_LEVEL_TYPES = ['Countries', 'Industries', 'Topics', 'Trade Regions', 'World Regions']
+
   def get_all_geo_terms_for_country(country)
     country_name = extract_country_name(country)
     country_name = normalize_country(country_name)
@@ -35,15 +37,32 @@ module LookupMethods
     country_term
   end
 
-  private
-
-  def extract_object_property_labels(term, key)
-    term[:object_properties][key].map{|hash| hash[:label]} rescue []
+  def get_high_level_type(label)
+    term = get_term_by_label(label)
+    high_level_types = process_subclass_of(term[:subject])
+    high_level_types.select { |type| HIGH_LEVEL_TYPES.include?(type)}
   end
 
   def find_by_id(id, passed_terms = nil)
     passed_terms = terms if passed_terms.nil?
     passed_terms.find{ |term| term[:subject] == id }
+  end
+
+  private
+
+  def process_subclass_of(id)
+    parent = find_by_id(id)
+    member_of_labels = extract_object_property_labels(parent, :member_of)
+    # If term is not a member of a high level type and is not a top-level term, process its parent:
+    if (member_of_labels & HIGH_LEVEL_TYPES).empty? && !parent[:sub_class_of].empty?
+      return process_subclass_of(parent[:sub_class_of].first[:id])
+    else
+      return member_of_labels
+    end
+  end
+
+  def extract_object_property_labels(term, key)
+    term[:object_properties][key].map{|hash| hash[:label]} rescue []
   end
 
   def extract_related(term)
