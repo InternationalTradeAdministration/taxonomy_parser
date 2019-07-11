@@ -3,7 +3,7 @@ require 'yaml'
 
 module LookupMethods
 
-  HIGH_LEVEL_TYPES = ['Countries', 'Industries', 'Topics', 'Trade Regions', 'World Regions']
+  HIGH_LEVEL_TYPES = ['Countries', 'Industries', 'Trade Topics', 'Trade Regions', 'World Regions']
 
   def get_all_geo_terms_for_country(country)
     country_name = extract_country_name(country)
