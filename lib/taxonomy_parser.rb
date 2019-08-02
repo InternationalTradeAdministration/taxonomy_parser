@@ -3,7 +3,18 @@ require 'nokogiri'
 require 'open-uri'
 require 'zip'
 require 'tempfile'
+
+require 'active_support'
+require 'active_support/core_ext/object/blank'
+require 'active_support/core_ext/string'
+
 Dir[File.dirname(__FILE__) + "/taxonomy_parser/modules/*.rb"].each {|file| require file }
+
+require 'taxonomy_parser/owl_zip_reader'
+require 'taxonomy_parser/consolidated_xml_document'
+require 'taxonomy_parser/owl_xpath_helper'
+require 'taxonomy_parser/owl_class_type_detector'
+Dir[File.dirname(__FILE__) + "/taxonomy_parser/extractors/*.rb"].each {|file| require file }
 
 class TaxonomyParser
   include LookupMethods
