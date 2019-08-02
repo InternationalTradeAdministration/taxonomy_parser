@@ -25,7 +25,7 @@ describe Extractors::ClassExtractor do
           has_narrower: [
             { id: 'RDBsKPGzqliWT5godmR5PDV', label: 'Aviation' },
             { id: 'R9lHhOo010EPhoajnKC2Lvg', label: 'Defense Equipment' },
-            { id: 'R3anJjpDBXy092dEyJ0nXU', label: nil }
+            { id: 'R3anJjpDBXy092dEyJ0nXU', label: 'missing term' }
           ],
           is_main_concept_in_collection: [
             { id: 'R79uIjoQaQ9KzvJfyB1H7Ru', label: 'Industries' }
@@ -53,13 +53,13 @@ describe Extractors::ClassExtractor do
             { id: 'R8CoATsjiZSLAZF4Aaz6kK6', label: 'Aerospace and Defense' }
           ],
           has_narrower: [
-            { id: 'R9sYmPzKkdKVRi2X3oObIyM', label: nil },
-            { id: 'R635cvqm6BBP8Jzu7yW6oh', label: nil },
-            { id: 'RvXfDHB5h5CSXPVpkb2gUJ', label: nil },
-            { id: 'R83KkvcNAEbR5GIN8ALouQW', label: nil },
-            { id: 'RBs1GcA7YB0XYJPwBZgk5xR', label: nil },
-            { id: 'RB5EzH3O2Hn4aqHGmKIXaJb', label: nil },
-            { id: 'R8AFRGW0gBQe3oP4WiY3o9s', label: nil }
+            { id: 'R9sYmPzKkdKVRi2X3oObIyM', label: 'missing term' },
+            { id: 'R635cvqm6BBP8Jzu7yW6oh', label: 'missing term' },
+            { id: 'RvXfDHB5h5CSXPVpkb2gUJ', label: 'missing term' },
+            { id: 'R83KkvcNAEbR5GIN8ALouQW', label: 'missing term' },
+            { id: 'RBs1GcA7YB0XYJPwBZgk5xR', label: 'missing term' },
+            { id: 'RB5EzH3O2Hn4aqHGmKIXaJb', label: 'missing term' },
+            { id: 'R8AFRGW0gBQe3oP4WiY3o9s', label: 'missing term' }
           ],
           is_in_scheme: [
             { id: 'RC7BwiZbq5uJvqujC7p9NAy', label: 'Thesaurus of International Trade and Investment Terms' }
@@ -84,16 +84,16 @@ describe Extractors::ClassExtractor do
         object_properties: {
           has_broader: [
             { id: 'R4Tyoniw0wZl3t7In4gVGW', label: 'Pacific Rim' },
-            { id: 'RBNzCOB6MPHkIcAr36FNe4Q', label: nil },
-            { id: 'RD1qG8h2SlYrcW9LSFriQ2d', label: nil },
-            { id: 'RC7yMOkNtsKp6PxYXaWc3He', label: nil }
+            { id: 'RBNzCOB6MPHkIcAr36FNe4Q', label: 'missing term' },
+            { id: 'RD1qG8h2SlYrcW9LSFriQ2d', label: 'missing term' },
+            { id: 'RC7yMOkNtsKp6PxYXaWc3He', label: 'missing term' }
           ],
           has_related: [
-            { id: 'R8QeCXxFOyplkfg4SI30D6w', label: nil },
-            { id: 'RB53lPnm186ivFLEXmbWylT', label: nil },
-            { id: 'R7YQAlNP4iXuBJLBhgPAcIO', label: nil },
-            { id: 'R9H8fTryqnqoG9WBuzDGlGt', label: nil },
-            { id: 'RMWO1fpkJ5LvTSEZyAAl3K', label: nil }
+            { id: 'R8QeCXxFOyplkfg4SI30D6w', label: 'missing term' },
+            { id: 'RB53lPnm186ivFLEXmbWylT', label: 'missing term' },
+            { id: 'R7YQAlNP4iXuBJLBhgPAcIO', label: 'missing term' },
+            { id: 'R9H8fTryqnqoG9WBuzDGlGt', label: 'missing term' },
+            { id: 'RMWO1fpkJ5LvTSEZyAAl3K', label: 'missing term' }
           ],
           is_main_concept_in_collection: [
             { id: 'RCzwUJdLiYabKMRXxVGNvf8', label: 'U.S. Free Trade Agreement Partner Countries' },
@@ -122,7 +122,7 @@ describe Extractors::ClassExtractor do
             { id: 'Rt8hC8B97usWz6X1JOhP32', label: 'Trade Preference Programs' }],
           has_related: [
             { id: 'R8DdIMDFzHvwLDKQu30RRmN', label: 'Sub-Saharan Africa' },
-            { id: "RDkR6Coi999FtjJzavA1ytE", label: nil }
+            { id: "RDkR6Coi999FtjJzavA1ytE", label: 'missing term' }
           ],
           is_in_scheme: [
             { id: 'RC7BwiZbq5uJvqujC7p9NAy', label: 'Thesaurus of International Trade and Investment Terms' }
@@ -175,12 +175,12 @@ describe Extractors::ClassExtractor do
         },
         object_properties: {
           has_narrower: [
-            { id: 'RPAxEt4cHXZPPJ587s5tlG', label: nil },
+            { id: 'RPAxEt4cHXZPPJ587s5tlG', label: 'missing term' },
             { id: 'R8DdIMDFzHvwLDKQu30RRmN', label: 'Sub-Saharan Africa' },
-            { id: 'R7q9jrGbpXPRPccAu33iNNU', label: nil }
+            { id: 'R7q9jrGbpXPRPccAu33iNNU', label: 'missing term' }
           ],
           has_related: [
-            { id: 'RDkqAkKpM7hCxY84UQAuLaj', label: nil }
+            { id: 'RDkqAkKpM7hCxY84UQAuLaj', label: 'missing term' }
           ],
           is_main_concept_in_collection: [
             { id: 'R8cndKa2D8NuNg7djwJcXxB', label: 'World Regions' }
@@ -208,14 +208,14 @@ describe Extractors::ClassExtractor do
             { id: 'RYpfofeF7tAALNfD2cMbaP', label: 'Africa' }
           ],
           has_narrower: [
-            { id: 'R84vd2fSNWZmsinYehOK6aG', label: nil },
-            { id: 'RBAVlisida7HGDpQBhwirCd', label: nil },
+            { id: 'R84vd2fSNWZmsinYehOK6aG', label: 'missing term' },
+            { id: 'RBAVlisida7HGDpQBhwirCd', label: 'missing term' },
             { id: 'RDFbgSy3LZrH6PRhU3Ah9FK', label: 'South Africa' }
           ],
           has_related: [
-            { id: 'RDzPvl6rgNC4szHLAsCM13', label: nil },
+            { id: 'RDzPvl6rgNC4szHLAsCM13', label: 'missing term' },
             { id: 'R2hRDhgUBIzDSqa22tDdHt', label: 'South African Customs Union' },
-            { id: 'RDUgllCOnvIkkxDg7dNcusj', label: nil }
+            { id: 'RDUgllCOnvIkkxDg7dNcusj', label: 'missing term' }
           ],
           member_of: [
             { id: 'R8cndKa2D8NuNg7djwJcXxB', label: 'World Regions' }
@@ -242,7 +242,7 @@ describe Extractors::ClassExtractor do
         object_properties: {
           has_narrower: [
             { id: 'RBYST5TkMsG3aOT9QMbCYFF', label: 'African Growth and Opportunity Act' },
-            { id: 'R8G6sSHw1tiYAx1glqZQrdN', label: nil }
+            { id: 'R8G6sSHw1tiYAx1glqZQrdN', label: 'missing term' }
           ],
           is_main_concept_in_collection: [
             { id: 'RDlBzieEBJR6LAcbiT7mdYC', label: 'Trade Policy and Agreements' }
@@ -287,8 +287,8 @@ describe Extractors::ClassExtractor do
         type: ['Trade Topics'],
         object_properties: {
           has_related: [
-            { id: "RDkR6Coi999FtjJzavA1ytE", label: nil },
-            { id: "RCRHog7jT4RwmJZVs4fvOq2", label: nil },
+            { id: "RDkR6Coi999FtjJzavA1ytE", label: 'missing term' },
+            { id: "RCRHog7jT4RwmJZVs4fvOq2", label: 'missing term' },
             { id: "Rxe6uQeredRAyMxXbswm89", label: "Trade Barriers" }
           ],
           is_main_concept_in_collection: [

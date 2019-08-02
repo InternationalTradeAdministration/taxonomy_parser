@@ -73,7 +73,7 @@ module Extractors
         owl_class[:object_properties].each do |_property_type, properties|
           properties.each do |property|
             property_class = owl_classes[property[:id]]
-            property[:label] = property_class ? property_class[:label] : nil
+            property[:label] = property_class ? property_class[:label] : 'missing term'
           end
         end
       end
