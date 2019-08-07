@@ -9,13 +9,11 @@ class ClassAttributesExtractor
   end
 
   def extract_attributes(node)
-    object_properties = extract_object_properties(node)
-
     {
       id: extract_id_from_node(node),
       label: extract_label(node),
       annotations: extract_annotations(node),
-      object_properties: object_properties
+      object_properties: extract_object_properties(node)
     }
   end
 

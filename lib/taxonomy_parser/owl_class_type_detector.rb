@@ -1,25 +1,32 @@
 module OwlClassTypeDetector
   extend OwlXpathHelper
 
-  WHITELISTED_TYPES = [
+  WHITELISTED_GEOGRAPHIC_LOCATIONS_TYPES = [
     'Countries',
-    'Industries',
     'Trade Regions',
-    'Trade Topics',
     'U.S. States and Territories',
-    'U.S. Government',
     'World Regions'
+  ]
+
+  WHITELISTED_TYPES = [
+    'Industries',
+    'Trade Topics',
+    'U.S. Government'
   ].freeze
 
   US_STATES_TERRITORIES_CONCEPT_GROUP_IRI = 'http://webprotege.stanford.edu/Rqdpj5QSp8PxZGtrXuOpdK'.freeze
 
-  def detect(node, parent_label, parent_types)
-    return [parent_label] if WHITELISTED_TYPES.include? parent_label
+  def detect(node, parent_class)
+    if WHITELISTED_TYPES.include? parent_class[:label]
+      return [parent_class[:label]]
+    elsif WHITELISTED_GEOGRAPHIC_LOCATIONS_TYPES.include? parent_class[:label]
+      return ['Geographic Locations', parent_class[:label]]
+    end
 
     if us_states_and_territories? node
-      ['U.S. States and Territories']
+      ['Geographic Locations', 'U.S. States and Territories']
     else
-      parent_types
+      parent_class[:type] || []
     end
   end
 

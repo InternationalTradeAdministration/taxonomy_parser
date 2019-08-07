@@ -9,6 +9,33 @@ describe Extractors::ClassExtractor do
   end
 
   describe '#extract' do
+    it 'returns top level concept groups' do
+      actual_concepts = extractor.extract.values
+
+      expected_hash = {
+        id: "RCM1PE2jExQ27PUY0a2WdxD",
+        label: "Geographic Locations",
+        annotations: {
+          pref_label: ["Geographic Locations"], source: ["ITA"]
+        },
+        object_properties: {
+          sub_group: [
+            { id: "RCzwUJdLiYabKMRXxVGNvf8", label: "U.S. Free Trade Agreement Partner Countries" },
+            { id: "R7ySyiNxcfeZ6bfNjhocNun", label: "Trade Regions" },
+            { id: "R8W91u35GBegWcXXFflYE4", label: "Countries" },
+            { id: "Rqdpj5QSp8PxZGtrXuOpdK", label: "U.S. States and Territories" },
+            { id: "R8cndKa2D8NuNg7djwJcXxB", label: "World Regions" }],
+          micro_thesaurus_of: [
+            { id: "RC7BwiZbq5uJvqujC7p9NAy", label: "Thesaurus of International Trade and Investment Terms" }
+          ] },
+        type: []
+      }
+
+      actual_concept_hash = actual_concepts.detect { |cg| cg[:label] == 'Geographic Locations' }
+      # binding.pry
+      expect(actual_concept_hash).to eq(expected_hash)
+    end
+
     it 'returns Industries concept' do
       actual_concepts = extractor.extract.values
 
@@ -80,7 +107,7 @@ describe Extractors::ClassExtractor do
           pref_label: ['Peru'],
           source: ['ISO 3166']
         },
-        type: ['Countries'],
+        type: ['Geographic Locations', 'Countries'],
         object_properties: {
           has_broader: [
             { id: 'R4Tyoniw0wZl3t7In4gVGW', label: 'Pacific Rim' },
@@ -111,7 +138,7 @@ describe Extractors::ClassExtractor do
       expected_hash = {
         id: 'RBYST5TkMsG3aOT9QMbCYFF',
         label: 'African Growth and Opportunity Act',
-        type: ['Trade Regions'],
+        type: ['Geographic Locations', 'Trade Regions'],
         annotations: {
           alt_label: ['AGOA'],
           definition: ['The African Growth and Opportunity Act (AGOA) legislation that establishes a a nonreciprocal trade preference program providing duty-free treatment to U.S. imports of certain products from eligible Sub- Saharan African countries.'],
@@ -143,7 +170,7 @@ describe Extractors::ClassExtractor do
       expected_hash = {
         id: 'R8EQ1rTm3YaOBhcjtH1NGt6',
         label: 'District of Columbia',
-        type: ['U.S. States and Territories'],
+        type: ['Geographic Locations', 'U.S. States and Territories'],
         annotations: {
           alt_label: ['Washington, DC'],
           pref_label: ['District of Columbia'],
@@ -168,7 +195,7 @@ describe Extractors::ClassExtractor do
       expected_hash = {
         id: 'RYpfofeF7tAALNfD2cMbaP',
         label: 'Africa',
-        type: ['World Regions'],
+        type: ['Geographic Locations', 'World Regions'],
         annotations: {
           pref_label: ['Africa'],
           source: ['ITA']
@@ -197,7 +224,7 @@ describe Extractors::ClassExtractor do
       expected_hash = {
         id: 'R8DdIMDFzHvwLDKQu30RRmN',
         label: 'Sub-Saharan Africa',
-        type: ['World Regions'],
+        type: ['Geographic Locations', 'World Regions'],
         annotations: {
           alt_label: ['SubSaharan Africa', 'Sub Saharan Africa'],
           pref_label: ['Sub-Saharan Africa'],
