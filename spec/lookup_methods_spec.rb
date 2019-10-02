@@ -17,7 +17,7 @@ describe LookupMethods do
     it 'returns the correct top level type for a given term' do
       expect(@parser.get_high_level_type('Afghanistan')).to eq(["Countries"])
       expect(@parser.get_high_level_type('Aviation')).to eq(["Industries"])
-      expect(@parser.get_high_level_type('Regional Organizations')).to eq(["Topics"])
+      expect(@parser.get_high_level_type('Regional Organizations')).to eq(["Trade Topics"])
       expect(@parser.get_high_level_type('Economic Cooperation Organization')).to eq(["Trade Regions"])
       expect(@parser.get_high_level_type('Central Asia')).to eq(["World Regions"])
     end
